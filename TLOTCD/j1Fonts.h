@@ -41,29 +41,8 @@ public:
 
 	std::vector<_TTF_Font*>	fonts;
 
-
-
 	_TTF_Font*				defaultFont = nullptr;
-	_TTF_Font*			    openSansBold12 = nullptr;
-	_TTF_Font*			    openSansBold18 = nullptr;
-	_TTF_Font*			    openSansBold36 = nullptr;
-	_TTF_Font*			    openSansSemiBold24 = nullptr;
-	_TTF_Font*				openSansSemiBold36 = nullptr;
-	_TTF_Font*				piecesofEight36 = nullptr;
-	_TTF_Font*				piecesofEight48 = nullptr;
-	_TTF_Font*				piecesofEight24 = nullptr;
-	_TTF_Font*				piecesofEight18 = nullptr;
 
-	// hitpoint labels
-	_TTF_Font*              shatterBoxx36 = nullptr;
-	_TTF_Font*              shatterBoxx48 = nullptr;
-
-	_TTF_Font* knightsQuest18 = nullptr;
-	_TTF_Font* knightsQuest24 = nullptr;
-
-
-	_TTF_Font* weekSRB18 = nullptr;
-	_TTF_Font* weekSRB24 = nullptr;
 };
 
 

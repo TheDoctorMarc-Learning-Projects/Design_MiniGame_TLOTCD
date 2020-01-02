@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.645
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DoomEngine", "DoomEngine.vcxproj", "{7E3C2994-5B90-4E9C-9718-ED3518C1EDCE}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TLOTCD", "TLOTCD.vcxproj", "{7E3C2994-5B90-4E9C-9718-ED3518C1EDCE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +26,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {852602D8-F42B-4FF5-B58B-AF6CAEA8316D}
+		SolutionGuid = {43A4BFC0-AC0B-4ADE-8A3A-8534EA70324B}
 	EndGlobalSection
 EndGlobal

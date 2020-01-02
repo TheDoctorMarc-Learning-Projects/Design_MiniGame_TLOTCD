@@ -29,8 +29,6 @@ bool j1Gui::Awake(pugi::xml_node& conf)
 	atlas_file_name = conf.child("atlas").attribute("file").as_string();
 	spriteScale = conf.child("spriteScale").attribute("value").as_float();
 
-	currentCanvas = DBG_NEW UiItem();
-	LoadXMLGUI((pugi::xml_node&) conf);
 	return true;
 }
 
@@ -38,9 +36,9 @@ bool j1Gui::Start()
 {
 	atlas = App->tex->Load(atlas_file_name.data());
 
-	// load the main menu GUI 
-
-	App->audio->PlayMusic("/sound/music/soil-halo.ogg");
+	App->audio->PlayMusic("sound/music/mus1.ogg");
+	currentCanvas = DBG_NEW UiItem();
+	LoadXMLGUI((pugi::xml_node&) App->config.child("gui"));
 
 	return true;
 }

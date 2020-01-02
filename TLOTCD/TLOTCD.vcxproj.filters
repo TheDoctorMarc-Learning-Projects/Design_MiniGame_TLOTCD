@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="j1App.cpp">
+      <Filter>Other</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Audio.cpp">
+      <Filter>Other</Filter>
+    </ClCompile>
+    <ClCompile Include="UiItem.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UiItem_Image.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UiItem_Label.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Gui.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="j1FadeToBlack.cpp">
+      <Filter>Other</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Fonts.cpp">
+      <Filter>Other</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Input.cpp">
+      <Filter>Other</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Main.cpp">
+      <Filter>Other</Filter>
+    </ClCompile>
+    <ClCompile Include="j1PerfTimer.cpp">
+      <Filter>Other</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Render.cpp">
+      <Filter>Other</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Textures.cpp">
+      <Filter>Other</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Timer.cpp">
+      <Filter>Other</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Window.cpp">
+      <Filter>Other</Filter>
+    </ClCompile>
+    <ClCompile Include="j1EntityFactory.cpp">
+      <Filter>Game Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="p2Log.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="PugiXml\src\pugixml.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Game Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="RNG.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="j1App.h">
+      <Filter>Other</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Audio.h">
+      <Filter>Other</Filter>
+    </ClInclude>
+    <ClInclude Include="UiItem_Label.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UiItem.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UiItem_Image.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Gui.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="j1FadeToBlack.h">
+      <Filter>Other</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Fonts.h">
+      <Filter>Other</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Input.h">
+      <Filter>Other</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Module.h">
+      <Filter>Other</Filter>
+    </ClInclude>
+    <ClInclude Include="j1PerfTimer.h">
+      <Filter>Other</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Render.h">
+      <Filter>Other</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Textures.h">
+      <Filter>Other</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Timer.h">
+      <Filter>Other</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Window.h">
+      <Filter>Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Game Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="j1EntityFactory.h">
+      <Filter>Game Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="p2Defs.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="p2DynArray.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="p2Log.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="p2Point.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="p2PQueue.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="PugiXml\src\pugiconfig.hpp">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="PugiXml\src\pugixml.hpp">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="p2Animation.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="RNG.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Game\gui\icon.ico">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="icon1.ico">
+      <Filter>Resources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Game Logic">
+      <UniqueIdentifier>{e63e97e1-638e-4771-a38a-14577b574779}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{0c4985cb-055a-45ac-8b8c-85ea0723b2ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Other">
+      <UniqueIdentifier>{b3fe6aad-0e96-49a0-b9f6-a351cd65ca16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{332e5490-bdec-461d-8827-e4f942185a14}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

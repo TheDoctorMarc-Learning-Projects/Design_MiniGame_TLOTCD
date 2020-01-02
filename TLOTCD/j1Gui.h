@@ -70,7 +70,6 @@ private:
 	iPoint lastMousePos = iPoint(0, 0); 
 	UiItem* selectedItem = nullptr; 
 
-
 public: 
 	bool debug = false;
 

@@ -25,133 +25,28 @@
   <gui>
    
 	 <images>
-        <image name="panel">
-		  <position x="104" y="580" />
-          <section x="0" y="0" w="320" h="32"/>
+        <image name="bg">
+		  <position x="0" y="0" />
+          <section x="0" y="0" w="1514" h="851"/>
+		  <scaleFactor value = "1.0"/>
         </image>
 		
-		
-		 <image name="oldCollectible">
-		  <position x="914" y="599" />
-          <section x="22" y="45" w="16" h="23"/>
-		  <textureMapName value="loot"/>
-        </image>
-		
-		 <image name="newCollectible">
-		  <position x="1044" y="599" />
-          <section x="0" y="45" w="16" h="23"/>
-		  <textureMapName value="loot"/>
-        </image>
 		
 	 </images>	
 	 
 	 
 	  <labels>
 	  
-        <label name="healthLabel">
-          <position x="444" y="585"/>
-          <color R="40" G="0" B="0" A="255"/>
-          <text value="500"/>
-          <path p="gui/fonts/amazdoom/AmazDooMLeft.ttf"/>
-          <size s="24"/>
-		  <resetable value = "true"/>   
-        </label>
-		
-		<label name="armorLabel">
-          <position x="780" y="585"/>
-          <color R="40" G="0" B="0" A="255"/>
-          <text value="0"/>
-          <path p="gui/fonts/amazdoom/AmazDooMLeft.ttf"/>
-          <size s="24"/>
-		  <resetable value = "true"/>   
-        </label>
-		
-		<label name="ammoLabel">
-          <position x="160" y="585"/>
-          <color R="40" G="0" B="0" A="255"/>
-          <text value="0"/>
-          <path p="gui/fonts/amazdoom/AmazDooMLeft.ttf"/>
-          <size s="24"/>
-		  <resetable value = "true"/>   
-        </label>
-		
-		
-		<label name="oldCollectibleLabel">
-           <position x="984" y="605" />
-          <color R="40" G="0" B="0" A="255"/>
-          <text value="0"/>
-          <path p="gui/fonts/amazdoom/AmazDooMLeft.ttf"/>
-          <size s="24"/>
-		  <resetable value = "true"/>   
-        </label>
-		
-		<label name="newCollectibleLabel">
-          <position x="1114" y="605" />
-          <color R="40" G="0" B="0" A="255"/>
-          <text value="0"/>
-          <path p="gui/fonts/amazdoom/AmazDooMLeft.ttf"/>
-          <size s="24"/>
-		  <resetable value = "true"/>   
-        </label>
-		
-		<label name="deathTimerLabel">
-          <position x="1000" y="15" />
+        <label name="test">
+          <position x="300" y="20"/>
           <color R="255" G="255" B="255" A="255"/>
-          <text value="Death in: "/>
-          <path p="gui/fonts/amazdoom/AmazDooMLeft.ttf"/>
-          <size s="60"/>
-		  <scaleFactor value="1.0"/>
+          <text value="FIGHT!"/>
+          <path p="GUI/Fonts/LemonMilk.ttf"/>
+          <size s="48"/>
+		   <scaleFactor value = "1.0"/>
         </label>
 		
-		<label name="deathTimerCounter">
-          <position x="1170" y="15" />
-          <color R="255" G="255" B="255" A="255"/>
-          <text value="40"/>
-          <path p="gui/fonts/amazdoom/AmazDooMLeft.ttf"/>
-          <size s="60"/>
-		  <scaleFactor value="1.0"/>
-		  <resetable value = "true"/>   
-        </label>
-		
-		
-		<label name="Time">
-          <position x="50" y="8" />
-          <color R="255" G="255" B="255" A="255"/>
-          <text value="Total time: "/>
-          <path p="gui/fonts/amazdoom/AmazDooMLeft.ttf"/>
-          <size s="36"/>
-		  <scaleFactor value="1.0"/>
-        </label>
-		
-		<label name="TimeCounter">
-          <position x="190" y="8" />
-          <color R="255" G="255" B="200" A="255"/>
-          <text value="0"/>
-          <path p="gui/fonts/amazdoom/AmazDooMLeft.ttf"/>
-          <size s="36"/>
-		  <scaleFactor value="1.0"/>
-		  <resetable value = "true"/>   
-        </label>
-		
-		
-		<label name="Lives">
-          <position x="230" y="8" />
-          <color R="255" G="255" B="200" A="255"/>
-          <text value="Lives: "/>
-          <path p="gui/fonts/amazdoom/AmazDooMLeft.ttf"/>
-          <size s="36"/>
-		  <scaleFactor value="1.0"/>
-        </label>
-		
-		<label name="LiveCounter">
-          <position x="300" y="8" />
-          <color R="255" G="255" B="255" A="255"/>
-          <text value="3"/>
-          <path p="gui/fonts/amazdoom/AmazDooMLeft.ttf"/>
-          <size s="36"/>
-		  <scaleFactor value="1.0"/>
-		  <resetable value = "true"/>   
-        </label>
+	
 		
       </labels>
 	  

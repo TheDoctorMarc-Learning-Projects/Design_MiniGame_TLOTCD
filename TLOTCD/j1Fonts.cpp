@@ -36,26 +36,8 @@ bool j1Fonts::Awake(pugi::xml_node& conf)
 		defaultFont = Load(path, size);*/
 	}
 
-	/*openSansBold12 = Load("fonts/open_sans/OpenSans-Bold.ttf", 12);
-	openSansBold18 = Load("fonts/open_sans/OpenSans-Bold.ttf", 18);
-	openSansBold36 = Load("fonts/open_sans/OpenSans-Bold.ttf", 36);
-	openSansSemiBold24 = Load("fonts/open_sans/OpenSans-Semibold.ttf", 24);
-	openSansSemiBold36 = Load("fonts/open_sans/OpenSans-Semibold.ttf", 36);
-
-	shatterBoxx36 = Load("fonts/shatterboxx/shatterboxx.regular.ttf", 36);
-	shatterBoxx48 = Load("fonts/shatterboxx/shatterboxx.regular.ttf", 48);
-
-	piecesofEight36 = Load("fonts/Pieces_of_Eight/Pieces of Eight.ttf", 36);
-	piecesofEight48 = Load("fonts/Pieces_of_Eight/Pieces of Eight.ttf", 48);
-
-	piecesofEight24= Load("fonts/Pieces_of_Eight/Pieces of Eight.ttf", 24);
-	piecesofEight18 = Load("fonts/Pieces_of_Eight/Pieces of Eight.ttf", 18);
-
-	knightsQuest18 = Load("fonts/knights-quest.regular/knights-quest.regular.ttf", 18);
-	knightsQuest24 = Load("fonts/knights-quest.regular/knights-quest.regular.ttf", 24);
-
-	weekSRB18 = Load("fonts/week-srb-regular/week-srb-regular.ttf", 18);
-	weekSRB24 = Load("fonts/week-srb-regular/week-srb-regular.ttf", 24);*/
+	defaultFont = Load("GUI/Fonts/LemonMilk.ttf", 18);
+	
 
 	return ret;
 }
@@ -100,9 +82,7 @@ SDL_Texture * j1Fonts::Print(const char * text, SDL_Color color, _TTF_Font * fon
 {
 
 	SDL_Texture* ret = NULL;
-	SDL_Surface* surface = 
-		(wrapLength > 0) ? TTF_RenderText_Blended_Wrapped((font) ? font : defaultFont, text, color, wrapLength)
-		: TTF_RenderText_Blended((font) ? font : defaultFont, text, color);
+	SDL_Surface* surface = TTF_RenderText_Blended((font) ? font : defaultFont, text, color);
 
 	if (surface == NULL)
 	{

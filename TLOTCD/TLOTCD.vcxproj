@@ -92,7 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>_ITERATOR_DEBUG_LEVEL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <LanguageStandard>stdcpp14</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <ErrorReporting>Send</ErrorReporting>
     </ClCompile>
     <Link>
@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Character.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="j1App.cpp" />
     <ClCompile Include="j1Audio.cpp" />
@@ -161,11 +162,13 @@
     <ClCompile Include="j1Window.cpp" />
     <ClCompile Include="p2Log.cpp" />
     <ClCompile Include="PugiXml\src\pugixml.cpp" />
+    <ClCompile Include="RNG.cpp" />
     <ClCompile Include="UiItem.cpp" />
     <ClCompile Include="UiItem_Image.cpp" />
     <ClCompile Include="UiItem_Label.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Character.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="j1App.h" />
     <ClInclude Include="j1Audio.h" />
@@ -189,6 +192,7 @@
     <ClInclude Include="PugiXml\src\pugiconfig.hpp" />
     <ClInclude Include="PugiXml\src\pugixml.hpp" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="RNG.h" />
     <ClInclude Include="UiItem.h" />
     <ClInclude Include="UiItem_Image.h" />
     <ClInclude Include="UiItem_Label.h" />

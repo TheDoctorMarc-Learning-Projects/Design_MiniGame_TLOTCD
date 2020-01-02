@@ -47,11 +47,8 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(audio);
 	AddModule(fade); 
 	AddModule(font);
-
-	modules.push_back(entityFactory);
-	entityFactory->startInitialized = false;
-
 	AddModule(gui);
+	AddModule(entityFactory);
 
 	// render last to swap buffer
 	AddModule(render);
