@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Code">
+      <UniqueIdentifier>{6e25f8f8-75f6-401c-b662-d56bce38a19d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Help">
+      <UniqueIdentifier>{d8cab336-0695-44e7-9893-2a86c197c28f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core">
+      <UniqueIdentifier>{3b6142a2-32bb-46aa-a275-c2f988f80dba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Help\p2">
+      <UniqueIdentifier>{101a3c11-5514-40ea-9faf-ac06b54231f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Help\pugi">
+      <UniqueIdentifier>{0e15323d-4866-469c-abd5-8392e62ddfad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Help\timers">
+      <UniqueIdentifier>{fd948136-2576-4fed-a6e8-bb2775282be4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\Semi-Core">
+      <UniqueIdentifier>{dfd12e3b-c627-43f7-995d-56e49cad8068}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\In-Game">
+      <UniqueIdentifier>{b4415cfb-8c86-456c-b957-26f61427dc2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\In-Game\Entities">
+      <UniqueIdentifier>{6d3ca3e0-66a3-41ff-9eb8-f71bdb7e434c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\In-Screen">
+      <UniqueIdentifier>{003c2b20-e5c7-4632-ba70-989a10061bf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\In-Game\Entities\core">
+      <UniqueIdentifier>{2d864d1f-a3e8-4bcd-940c-b954c242de83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\In-Game\Entities\animated">
+      <UniqueIdentifier>{83906c81-5f58-4cf9-9718-0155e843330d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\In-Game\Entities\inanimated">
+      <UniqueIdentifier>{ea99eab3-0146-43a1-ae8f-51326ed0a0f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\In-Game\Entities\animated\Enemies">
+      <UniqueIdentifier>{bfb21894-3384-4382-b64a-eae9ae2aa9ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\In-Game\Entities\inanimated\loot">
+      <UniqueIdentifier>{47371f93-e41b-41db-94b8-888ddf37cfe6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\In-Game\Entities\inanimated\Blood">
+      <UniqueIdentifier>{e910ef1e-2b39-4df0-be03-44de79bb5cc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\In-Game\Entities\inanimated\loot\help">
+      <UniqueIdentifier>{f25ecf02-da7c-4d75-a3b0-9c6f834b3345}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\In-Game\Entities\inanimated\platforms">
+      <UniqueIdentifier>{7f3f0321-1941-45e8-bcde-a76a7f8389cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\In-Game\Entities\inanimated\loot\Basic Pickup Items">
+      <UniqueIdentifier>{d5ba5a94-fec4-4d4c-bfaa-2e3077c307a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\In-Game\Entities\inanimated\loot\Weapons">
+      <UniqueIdentifier>{f1033b18-420c-46c9-8f21-77127d2c30a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\In-Screen\GUI">
+      <UniqueIdentifier>{3b117c2d-476b-4483-98c2-7d7a91f0a655}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\In-Screen\GUI\Core">
+      <UniqueIdentifier>{ae760f97-301c-4e20-a7b4-b54db76edca6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\In-Screen\GUI\Items">
+      <UniqueIdentifier>{3d7e8067-d16e-4594-b892-b14addfae4cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\In-Screen\GUI\Items\special">
+      <UniqueIdentifier>{a10e1346-01a4-44b7-89b8-851df77ce7cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Core\In-Screen\help">
+      <UniqueIdentifier>{24667537-3381-46c1-9aee-ee8d678937d6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="j1App.cpp">
+      <Filter>Code\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Main.cpp">
+      <Filter>Code\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Scene.cpp">
+      <Filter>Code\Core\In-Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Render.cpp">
+      <Filter>Code\Core\In-Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Window.cpp">
+      <Filter>Code\Core\In-Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Textures.cpp">
+      <Filter>Code\Core\In-Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="p2Log.cpp">
+      <Filter>Code\Help\p2</Filter>
+    </ClCompile>
+    <ClCompile Include="PugiXml\src\pugixml.cpp">
+      <Filter>Code\Help\pugi</Filter>
+    </ClCompile>
+    <ClCompile Include="j1PerfTimer.cpp">
+      <Filter>Code\Help\timers</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Timer.cpp">
+      <Filter>Code\Help\timers</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Audio.cpp">
+      <Filter>Code\Core\Semi-Core</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Fonts.cpp">
+      <Filter>Code\Core\Semi-Core</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Input.cpp">
+      <Filter>Code\Core\Semi-Core</Filter>
+    </ClCompile>
+    <ClCompile Include="j1PathFinding.cpp">
+      <Filter>Code\Core\In-Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Code\Help</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Entity.cpp">
+      <Filter>Code\Core\In-Game\Entities\core</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Enemy.cpp">
+      <Filter>Code\Core\In-Game\Entities\animated\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="j1EnemyIMP.cpp">
+      <Filter>Code\Core\In-Game\Entities\animated\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Map.cpp">
+      <Filter>Code\Core\In-Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="j1EntityPlatform.cpp">
+      <Filter>Code\Core\In-Game\Entities\inanimated\platforms</Filter>
+    </ClCompile>
+    <ClCompile Include="j1EntityPlatformDynamic.cpp">
+      <Filter>Code\Core\In-Game\Entities\inanimated\platforms</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Particles.cpp">
+      <Filter>Code\Core\In-Game</Filter>
+    </ClCompile>
+    <ClCompile Include="j1EntityBloodDrop.cpp">
+      <Filter>Code\Core\In-Game\Entities\inanimated\Blood</Filter>
+    </ClCompile>
+    <ClCompile Include="j1EnemyCacodemon.cpp">
+      <Filter>Code\Core\In-Game\Entities\animated\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="j1EnemyBaronOfHell.cpp">
+      <Filter>Code\Core\In-Game\Entities\animated\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="j1EntityFactory.cpp">
+      <Filter>Code\Core\In-Game\Entities\core</Filter>
+    </ClCompile>
+    <ClCompile Include="j1EnemyHellKnight.cpp">
+      <Filter>Code\Core\In-Game\Entities\animated\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="j1BloodManager.cpp">
+      <Filter>Code\Core\In-Game\Entities\inanimated\Blood</Filter>
+    </ClCompile>
+    <ClCompile Include="j1EntityLootAmmo.cpp">
+      <Filter>Code\Core\In-Game\Entities\inanimated\loot\Basic Pickup Items</Filter>
+    </ClCompile>
+    <ClCompile Include="j1EntityLootCoin.cpp">
+      <Filter>Code\Core\In-Game\Entities\inanimated\loot\Basic Pickup Items</Filter>
+    </ClCompile>
+    <ClCompile Include="j1EntityLootHealth.cpp">
+      <Filter>Code\Core\In-Game\Entities\inanimated\loot\Basic Pickup Items</Filter>
+    </ClCompile>
+    <ClCompile Include="j1EntityLootWeapon.cpp">
+      <Filter>Code\Core\In-Game\Entities\inanimated\loot\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="j1EntityLootArmor.cpp">
+      <Filter>Code\Core\In-Game\Entities\inanimated\loot\Basic Pickup Items</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Gui.cpp">
+      <Filter>Code\Core\In-Screen\GUI\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="UiItem_Button.cpp">
+      <Filter>Code\Core\In-Screen\GUI\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="UiItem_Image.cpp">
+      <Filter>Code\Core\In-Screen\GUI\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="UiItem_Label.cpp">
+      <Filter>Code\Core\In-Screen\GUI\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="UiItem.cpp">
+      <Filter>Code\Core\In-Screen\GUI\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="UiItem_Face.cpp">
+      <Filter>Code\Core\In-Screen\GUI\Items\special</Filter>
+    </ClCompile>
+    <ClCompile Include="j1FadeToBlack.cpp">
+      <Filter>Code\Core\In-Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="j1EntityPlayer.cpp">
+      <Filter>Code\Core\In-Game\Entities\animated</Filter>
+    </ClCompile>
+    <ClCompile Include="UiItem_Bar.cpp">
+      <Filter>Code\Core\In-Screen\GUI\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Collision.cpp">
+      <Filter>Code\Core\In-Game</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="j1App.h">
+      <Filter>Code\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Module.h">
+      <Filter>Code\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Map.h">
+      <Filter>Code\Core\In-Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Scene.h">
+      <Filter>Code\Core\In-Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Render.h">
+      <Filter>Code\Core\In-Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Window.h">
+      <Filter>Code\Core\In-Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Textures.h">
+      <Filter>Code\Core\In-Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="p2Point.h">
+      <Filter>Code\Help\p2</Filter>
+    </ClInclude>
+    <ClInclude Include="p2Animation.h">
+      <Filter>Code\Help\p2</Filter>
+    </ClInclude>
+    <ClInclude Include="p2Defs.h">
+      <Filter>Code\Help\p2</Filter>
+    </ClInclude>
+    <ClInclude Include="p2DynArray.h">
+      <Filter>Code\Help\p2</Filter>
+    </ClInclude>
+    <ClInclude Include="p2Log.h">
+      <Filter>Code\Help\p2</Filter>
+    </ClInclude>
+    <ClInclude Include="p2PQueue.h">
+      <Filter>Code\Help\p2</Filter>
+    </ClInclude>
+    <ClInclude Include="PugiXml\src\pugiconfig.hpp">
+      <Filter>Code\Help\pugi</Filter>
+    </ClInclude>
+    <ClInclude Include="PugiXml\src\pugixml.hpp">
+      <Filter>Code\Help\pugi</Filter>
+    </ClInclude>
+    <ClInclude Include="j1PerfTimer.h">
+      <Filter>Code\Help\timers</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Timer.h">
+      <Filter>Code\Help\timers</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Input.h">
+      <Filter>Code\Core\Semi-Core</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Audio.h">
+      <Filter>Code\Core\Semi-Core</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Fonts.h">
+      <Filter>Code\Core\Semi-Core</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Collision.h">
+      <Filter>Code\Core\In-Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Code\Help</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Entity.h">
+      <Filter>Code\Core\In-Game\Entities\core</Filter>
+    </ClInclude>
+    <ClInclude Include="j1EntityFactory.h">
+      <Filter>Code\Core\In-Game\Entities\core</Filter>
+    </ClInclude>
+    <ClInclude Include="j1EnemyIMP.h">
+      <Filter>Code\Core\In-Game\Entities\animated\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Enemy.h">
+      <Filter>Code\Core\In-Game\Entities\animated\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="j1EntityPlatform.h">
+      <Filter>Code\Core\In-Game\Entities\inanimated\platforms</Filter>
+    </ClInclude>
+    <ClInclude Include="j1EntityPlatformDynamic.h">
+      <Filter>Code\Core\In-Game\Entities\inanimated\platforms</Filter>
+    </ClInclude>
+    <ClInclude Include="j1EntityLoot.h">
+      <Filter>Code\Core\In-Game\Entities\inanimated\loot</Filter>
+    </ClInclude>
+    <ClInclude Include="LootWeaponMaps.h">
+      <Filter>Code\Core\In-Game\Entities\inanimated\loot\help</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Particles.h">
+      <Filter>Code\Core\In-Game</Filter>
+    </ClInclude>
+    <ClInclude Include="j1BloodManager.h">
+      <Filter>Code\Core\In-Game\Entities\inanimated\Blood</Filter>
+    </ClInclude>
+    <ClInclude Include="j1EnemyCacodemon.h">
+      <Filter>Code\Core\In-Game\Entities\animated\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="j1EntityBloodDrop.h">
+      <Filter>Code\Core\In-Game\Entities\inanimated\Blood</Filter>
+    </ClInclude>
+    <ClInclude Include="j1EnemyBaronOfHell.h">
+      <Filter>Code\Core\In-Game\Entities\animated\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="j1EnemyHellKnight.h">
+      <Filter>Code\Core\In-Game\Entities\animated\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="j1EntityLootHealth.h">
+      <Filter>Code\Core\In-Game\Entities\inanimated\loot\Basic Pickup Items</Filter>
+    </ClInclude>
+    <ClInclude Include="j1EntityLootAmmo.h">
+      <Filter>Code\Core\In-Game\Entities\inanimated\loot\Basic Pickup Items</Filter>
+    </ClInclude>
+    <ClInclude Include="j1EntityLootCoin.h">
+      <Filter>Code\Core\In-Game\Entities\inanimated\loot\Basic Pickup Items</Filter>
+    </ClInclude>
+    <ClInclude Include="j1EntityLootWeapon.h">
+      <Filter>Code\Core\In-Game\Entities\inanimated\loot\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="j1EntityLootArmor.h">
+      <Filter>Code\Core\In-Game\Entities\inanimated\loot\Basic Pickup Items</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Gui.h">
+      <Filter>Code\Core\In-Screen\GUI\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="UiItem_Bar.h">
+      <Filter>Code\Core\In-Screen\GUI\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="UiItem_Button.h">
+      <Filter>Code\Core\In-Screen\GUI\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="UiItem_Image.h">
+      <Filter>Code\Core\In-Screen\GUI\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="UiItem_Label.h">
+      <Filter>Code\Core\In-Screen\GUI\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="UiItem.h">
+      <Filter>Code\Core\In-Screen\GUI\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="UiItem_Face.h">
+      <Filter>Code\Core\In-Screen\GUI\Items\special</Filter>
+    </ClInclude>
+    <ClInclude Include="j1FadeToBlack.h">
+      <Filter>Code\Core\In-Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="j1EntityPlayer.h">
+      <Filter>Code\Core\In-Game\Entities\animated</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="j1PathFinding.h">
+      <Filter>Code\Core\In-Game</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DoomEngine.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
+    <Image Include="..\Game\gui\icon.ico" />
+  </ItemGroup>
+</Project>
