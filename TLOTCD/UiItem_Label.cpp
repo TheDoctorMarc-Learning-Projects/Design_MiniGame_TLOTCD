@@ -78,7 +78,7 @@ bool UiItem_Label::ChangeTextureIdle(std::string textIdle, const SDL_Color* colo
 
 	if (texture)
 	{
-		if (wrapLength < 0)
+		if (wrapLength == 0)
 		{
 			SDL_QueryTexture(texture, NULL, NULL, &textureDimensions.x, &textureDimensions.y);
 			section = { 0, 0, textureDimensions.x, textureDimensions.y };

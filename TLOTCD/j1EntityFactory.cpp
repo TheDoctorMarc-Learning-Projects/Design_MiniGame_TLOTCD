@@ -7,6 +7,7 @@
 #include "j1Gui.h"
 #include "Brofiler/Brofiler.h"
 #include <algorithm>
+#include "UiItem_Label.h"
 
 #include <assert.h>
 #include "RNG.h"
@@ -54,7 +55,10 @@ bool j1EntityFactory::Start()
 	s = { 842,1000,238,65 };
 	defenseHelpers.push_back(App->gui->AddImage({ 300,400 }, &s, "Img", nullptr, 1.0F));
 
-	
+	// Attacks
+	dmgLabel = App->gui->AddLabel("dmgLabel", "Empty", { 255, 255, 255, 255 }, App->font->defaultFont, iPoint(500, 100), nullptr, 1.F);
+	dmgLabel->hide = true; 
+
 
 	return true;
 }
@@ -65,6 +69,16 @@ bool j1EntityFactory::PreUpdate()
 
 	if (App->pause == true)
 		return true;
+
+	if (dmgLabel->hide == false)
+	{
+		if ((popUpCurrentTime += App->GetDt()) >= popUpTime)
+		{
+			popUpCurrentTime = 0.f; 
+			dmgLabel->hide = true; 
+		}
+	}
+
 
 	bool ret = true;
 
@@ -160,4 +174,67 @@ bool j1EntityFactory::PostUpdate()
 
 				
 	return true;
+}
+
+void j1EntityFactory::SwitchTurn(Character* lastAttacker, Character* lastDefender)
+{
+	// Apply damage and update GUI
+	auto currentDefMode = lastDefender->currentDefense;
+	std::string popUpText = std::string(); 
+	float damage = 0.f;
+	if (currentAttack > 0)
+	{
+		
+		if (currentDefMode == currenDefense::BLOCK)
+			damage = (float)currentAttack - ((float)currentAttack * (float)lastDefender->stats.blockPercentatge);
+	
+		else
+		{
+			if (lastDefender->stats.lastEvaded == false)
+				damage = currentAttack; 
+		}
+		lastDefender->stats.HP -= damage;
+	}
+
+	if (lastAttacker->lastPassiveAction == "empty")
+	{
+		if (damage > 0.f)
+			popUpText = "Defender Received " + std::to_string((int)damage) + " Damage Of " + std::to_string((int)currentAttack);
+		else
+		{
+			if (currentAttack > 0.f)
+				popUpText = "Defender Evaded The Attack";
+			else
+				popUpText = "No Attack Was Made";
+		}
+	}
+	else
+	{
+		popUpText = lastAttacker->lastPassiveAction; 
+		lastAttacker->lastPassiveAction = "empty"; 
+	}
+
+	SDL_Color c = { 255, 255, 255, 255 };
+	dmgLabel->hide = false; 
+	dmgLabel->ChangeTextureIdle(popUpText,
+		&c, App->font->defaultFont);
+
+	lastDefender->hpLabel->ChangeTextureIdle(std::string("HP: " + std::to_string(lastDefender->stats.HP)),
+		&c, App->font->defaultFont);
+
+
+
+	// Defender now attacks
+	lastDefender->attackTurn = true;
+
+	// Attacker now defends
+	lastAttacker->attackTurn = false;
+
+	// Update the labels in case it was AI
+	if (lastAttacker->AI)
+		lastAttacker->UpdateLabels(); 
+
+	// Reset state
+	lastDefender->actionCompleted = lastAttacker->actionCompleted = false;
+	currentAttack = 0;
 }

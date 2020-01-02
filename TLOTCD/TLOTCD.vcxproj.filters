@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="j1App.cpp">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClCompile>
     <ClCompile Include="j1Audio.cpp">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClCompile>
     <ClCompile Include="UiItem.cpp">
       <Filter>UI</Filter>
@@ -20,31 +20,31 @@
       <Filter>UI</Filter>
     </ClCompile>
     <ClCompile Include="j1FadeToBlack.cpp">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClCompile>
     <ClCompile Include="j1Fonts.cpp">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClCompile>
     <ClCompile Include="j1Input.cpp">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClCompile>
     <ClCompile Include="j1Main.cpp">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClCompile>
     <ClCompile Include="j1PerfTimer.cpp">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClCompile>
     <ClCompile Include="j1Render.cpp">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClCompile>
     <ClCompile Include="j1Textures.cpp">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClCompile>
     <ClCompile Include="j1Timer.cpp">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClCompile>
     <ClCompile Include="j1Window.cpp">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClCompile>
     <ClCompile Include="j1EntityFactory.cpp">
       <Filter>Game Logic</Filter>
@@ -67,10 +67,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1App.h">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClInclude>
     <ClInclude Include="j1Audio.h">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClInclude>
     <ClInclude Include="UiItem_Label.h">
       <Filter>UI</Filter>
@@ -85,31 +85,31 @@
       <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="j1FadeToBlack.h">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClInclude>
     <ClInclude Include="j1Fonts.h">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClInclude>
     <ClInclude Include="j1Input.h">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClInclude>
     <ClInclude Include="j1Module.h">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClInclude>
     <ClInclude Include="j1PerfTimer.h">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClInclude>
     <ClInclude Include="j1Render.h">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClInclude>
     <ClInclude Include="j1Textures.h">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClInclude>
     <ClInclude Include="j1Timer.h">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClInclude>
     <ClInclude Include="j1Window.h">
-      <Filter>Other</Filter>
+      <Filter>Game Logic\Other</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">
       <Filter>Game Logic</Filter>
@@ -166,11 +166,11 @@
     <Filter Include="UI">
       <UniqueIdentifier>{0c4985cb-055a-45ac-8b8c-85ea0723b2ed}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Other">
-      <UniqueIdentifier>{b3fe6aad-0e96-49a0-b9f6-a351cd65ca16}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resources">
       <UniqueIdentifier>{332e5490-bdec-461d-8827-e4f942185a14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Logic\Other">
+      <UniqueIdentifier>{b3fe6aad-0e96-49a0-b9f6-a351cd65ca16}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

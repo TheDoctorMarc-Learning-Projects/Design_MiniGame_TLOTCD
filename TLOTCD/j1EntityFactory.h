@@ -12,6 +12,10 @@
 #include "p2Point.h"
 #include "Character.h"
 #include <random>
+#include "j1Fonts.h"
+
+#define RECHARGE 2
+#define HEAL 15
 
 class RNG; 
 class j1EntityFactory : public j1Module
@@ -30,7 +34,9 @@ public:
 		for (auto& c : characters)
 			RELEASE(c); 
 		characters.clear(); 
-
+		actionHelpers.clear(); 
+		defenseHelpers.clear(); 
+		dmgLabel = nullptr; 
 		RELEASE(rng); 
 		return true; 
 	};
@@ -76,21 +82,15 @@ public:
 
 	}
 
-	void SwitchTurn(Character* lastAttacker, Character* lastDefender)
-	{
-		// Defender now attacks
-		lastDefender->attackTurn = true;
-
-		// Attacker now defends
-		lastAttacker->attackTurn = false;
-
-		// Reset state
-		lastDefender->actionCompleted = lastAttacker->actionCompleted = false; 
-	}
+	void SwitchTurn(Character* lastAttacker, Character* lastDefender); 
 
 	void PlayerHelperDecider(Character* c); 
 
 public:
+	float popUpCurrentTime = 0.f; 
+	float popUpTime = 2.f; 
+	unsigned int currentAttack = 0; 
+	UiItem_Label* dmgLabel = nullptr; 
 	RNG* rng = nullptr; 
 	std::vector<Character*> characters; 
 	std::vector<UiItem_Image*> actionHelpers;
