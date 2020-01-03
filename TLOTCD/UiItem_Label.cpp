@@ -61,6 +61,9 @@ bool UiItem_Label::ChangeTextureIdle(std::string textIdle, const SDL_Color* colo
 	bool ret = false;
 	std::string text = (textIdle != "" || force) ? textIdle : this->text;
 	SDL_Color col = (color != NULL) ? *color : this->color;
+	if (color != NULL)
+		this->color = *color; 
+
 	TTF_Font * f = (font != NULL) ? (TTF_Font *)font : this->font;
 
 	SDL_Texture* aux = App->font->Print(text.data(), col, f, wrapLength);

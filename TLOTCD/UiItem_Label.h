@@ -17,9 +17,10 @@ public:
 	void CleanUp();
 public:
 	std::string text;
+	SDL_Color color;
 protected:
 
-	SDL_Color color;
+
 	TTF_Font* font = nullptr; 
 	SDL_Texture* texture = nullptr;
  

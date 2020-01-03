@@ -11,10 +11,14 @@
 Character::Character(bool active, bool enemy, bool AI, UiItem_Image* icon) : active(active), enemy(enemy), AI(AI), icon(icon)
 {
 	hpLabel = App->gui->AddLabel("HP", std::string("HP: " + std::to_string(stats.HP)), { 255, 255, 255, 255 }, App->font->defaultFont,
-		icon->GetPos() + iPoint(icon->hitBox.w / 2 + 50, -60), nullptr, 1.F); 
+		icon->GetPos() + iPoint(icon->hitBox.w / 2 + 50, -40), nullptr, 1.F); 
 	chargeLabel = App->gui->AddLabel("CHARGE", std::string("CHARGE: " + std::to_string(stats.charge)), { 255, 255, 255, 255 }, App->font->defaultFont,
-		icon->GetPos() + iPoint(icon->hitBox.w / 2 + 50, -40), nullptr, 1.F);
+		icon->GetPos() + iPoint(icon->hitBox.w / 2 + 50, -20), nullptr, 1.F);
+	characterLabel = App->gui->AddLabel("CHARGE", (enemy) ? "Character 2" : "Character 1", { 255, 255, 255, 255 }, App->font->defaultFont,
+		icon->GetPos() + iPoint(icon->hitBox.w / 2 + 50, -60), nullptr, 1.F);
 
+	if (active == false)
+		hpLabel->hide = chargeLabel->hide = characterLabel->hide = icon->hide = true;
 }
 
 void Character::Update(float dt)
@@ -86,9 +90,7 @@ void Character::Update(float dt)
 	}
 	else
 	{
-		static bool decisionMade = false; 
-
-		if (decisionMade == false)
+		if (stats.currentTime == 0.f) // first frame
 		{
 			// Make Decision
 			if (attackTurn)
@@ -187,15 +189,12 @@ void Character::Update(float dt)
 			}
 
 		}
-	
-		decisionMade = true;
 
 		// Await some time
 		if ((stats.currentTime += dt) >= stats.thinkTime)
 		{
 			stats.currentTime = 0.f; 
 			actionCompleted = true; 
-			decisionMade = false; 
 		}
 
 
@@ -305,4 +304,30 @@ void Character::UpdateLabels()
 	chargeLabel->ChangeTextureIdle(std::string("CHARGE: " + std::to_string(stats.charge)),
 		&c, App->font->defaultFont);
 
+}
+
+void Character::Reset()
+{
+	lastPassiveAction = "empty"; 
+	stats.Reset(); 
+	actionCompleted = false; 
+	attackTurn = false; 
+}
+
+void Character::Deactivate()
+{
+	lastPassiveAction = "empty";
+	stats.Reset();
+	actionCompleted = false;
+	attackTurn = false;
+	active = false; 
+	hpLabel->hide = chargeLabel->hide = characterLabel->hide = icon->hide = true;
+	UpdateLabels(); 
+}
+
+void Character::Activate()
+{ 
+	active = true; 
+	hpLabel->hide = chargeLabel->hide = characterLabel->hide = icon->hide = false;
+	UpdateLabels();
 }

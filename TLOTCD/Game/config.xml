@@ -33,22 +33,7 @@
 		
 		
 	 </images>	
-	 
-	 
-	  <labels>
-	  
-        <label name="test">
-          <position x="500" y="20"/>
-          <color R="255" G="255" B="255" A="255"/>
-          <text value="FIGHT!"/>
-          <path p="GUI/Fonts/LemonMilk.ttf"/>
-          <size s="48"/>
-		   <scaleFactor value = "1.0"/>
-        </label>
-		
-	
-		
-      </labels>
+
 	  
 	   <atlas file="gui/atlas.png"/>
     <spriteScale value = "3.35" /> 	

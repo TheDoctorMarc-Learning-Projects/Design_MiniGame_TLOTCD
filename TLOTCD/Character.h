@@ -22,7 +22,7 @@ struct Stats
 
 	// For AI, to simulate thinking
 	float currentTime = 0.f; 
-    float thinkTime = 2.f;
+    float thinkTime = 5.f;
 	bool lastEvaded = false; 
 
 	void Reset()
@@ -86,6 +86,11 @@ private:
 	// For AI
 	void UpdateLabels(); 
 
+	// Reset
+	void Reset(); 
+	void Deactivate(); 
+	void Activate(); 
+
 private: 
 	Stats stats; 
 	strategyMode mode = strategyMode::RANDOM; 
@@ -100,6 +105,7 @@ private:
 	UiItem_Image* icon = nullptr; 
 	UiItem_Label* hpLabel = nullptr; 
 	UiItem_Label* chargeLabel = nullptr;
+	UiItem_Label* characterLabel = nullptr;
 
 	friend class j1Gui; 
 	friend class j1EntityFactory; 

@@ -34,12 +34,34 @@ public:
 		for (auto& c : characters)
 			RELEASE(c); 
 		characters.clear(); 
+
+		for (auto& c : actionHelpers)
+			RELEASE(c);
 		actionHelpers.clear(); 
+
+		for (auto& c : defenseHelpers)
+			RELEASE(c);
 		defenseHelpers.clear();
-		AIHelpers.clear(); 
+
+		for (auto& c : AIHelpers)
+			RELEASE(c);
+		AIHelpers.clear();
+
+		for (auto& c : AIHelpersEmemy)
+			RELEASE(c);
 		AIHelpersEmemy.clear(); 
-		dmgLabel = nullptr; 
+
+		for (auto& c : allyCharacters)
+			RELEASE(c);
+		allyCharacters.clear(); 
+
+		for (auto& c : enemyCharacters)
+			RELEASE(c);
+		enemyCharacters.clear();
+
+		RELEASE(dmgLabel); 
 		RELEASE(rng); 
+
 		return true; 
 	};
 
@@ -90,6 +112,8 @@ public:
 
 	void ToggleUIVisibility(bool ally, bool enemy, Character* allyC, Character* enemyC);
 
+	void ToggleBattleMode(); 
+
 public:
 	float popUpCurrentTime = 0.f; 
 	float popUpTime = 2.f; 
@@ -97,12 +121,16 @@ public:
 	UiItem_Label* dmgLabel = nullptr; 
 	RNG* rng = nullptr; 
 	std::vector<Character*> characters; 
+	std::vector<Character*> allyCharacters; 
+	std::vector<Character*> enemyCharacters;
 	std::vector<UiItem_Image*> actionHelpers;
 	std::vector<UiItem_Image*> defenseHelpers;
 	std::vector<UiItem_Label*> AIHelpers; // attack and defence labels
 	std::vector<UiItem_Label*> AIHelpersEmemy; // attack and defence labels
 	UiItem_Image* topRight = nullptr; 
 	UiItem_Image* bottomLeft = nullptr;
+	UiItem_Label* allyName = nullptr; 
+	UiItem_Label* enemyName = nullptr;
 };
 
 
