@@ -41,7 +41,8 @@ enum class strategyMode
 	WEAK_ATTACK,
 	STRONG_ATTACK,
 	CHARGE,
-	HP
+	HP,
+	MAX_MODES
 };
 
 enum class defenseStrategyMode
@@ -49,6 +50,7 @@ enum class defenseStrategyMode
 	RANDOM,
 	BLOCK,
 	EVADE,
+	MAX_MODES
 };
 
 enum class currenDefense

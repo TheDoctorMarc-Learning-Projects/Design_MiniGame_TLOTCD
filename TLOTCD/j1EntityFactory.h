@@ -35,7 +35,9 @@ public:
 			RELEASE(c); 
 		characters.clear(); 
 		actionHelpers.clear(); 
-		defenseHelpers.clear(); 
+		defenseHelpers.clear();
+		AIHelpers.clear(); 
+		AIHelpersEmemy.clear(); 
 		dmgLabel = nullptr; 
 		RELEASE(rng); 
 		return true; 
@@ -84,7 +86,9 @@ public:
 
 	void SwitchTurn(Character* lastAttacker, Character* lastDefender); 
 
-	void PlayerHelperDecider(Character* c); 
+	void ToggleAIModes(bool ally, bool enemy, Character* allyC, Character* enemyC);
+
+	void ToggleUIVisibility(bool ally, bool enemy, Character* allyC, Character* enemyC);
 
 public:
 	float popUpCurrentTime = 0.f; 
@@ -95,6 +99,10 @@ public:
 	std::vector<Character*> characters; 
 	std::vector<UiItem_Image*> actionHelpers;
 	std::vector<UiItem_Image*> defenseHelpers;
+	std::vector<UiItem_Label*> AIHelpers; // attack and defence labels
+	std::vector<UiItem_Label*> AIHelpersEmemy; // attack and defence labels
+	UiItem_Image* topRight = nullptr; 
+	UiItem_Image* bottomLeft = nullptr;
 };
 
 
