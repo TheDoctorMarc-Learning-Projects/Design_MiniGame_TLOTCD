@@ -670,7 +670,9 @@ void j1EntityFactory::Death(Character* dead)
 
 	// Winner label
 	winner->hide = false; 
-	std::string text = ((dead->enemy) ? "CHARACTER 1 WINS" : "CHARACTER 2 WINS");
+	SDL_Color w = { 255, 255, 255, 255 };
+	std::string winTEXT = ((dead->enemy) ? "CHARACTER 1 WINS" : "CHARACTER 2 WINS");
+	winner->ChangeTextureIdle(winTEXT, &w, App->font->defaultFont);
 }
 
 void j1EntityFactory::ResetAIHelperColors(bool ally, bool enemy)
