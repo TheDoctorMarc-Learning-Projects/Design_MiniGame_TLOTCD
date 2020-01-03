@@ -317,7 +317,7 @@ void Character::AI_Recharge()
 	if (stats.charge < stats.initialCharge)
 		ReCharge(false);
 	else
-		AI_WeakAttack(); 
+		AI_StrongAttack();
 }
 
 void Character::AI_Heal()

@@ -132,6 +132,8 @@ bool j1EntityFactory::Start()
 	// Core helpers
 	dmgLabel = App->gui->AddLabel("dmgLabel", "Empty", { 255, 255, 255, 255 }, App->font->defaultFont, iPoint(450, 25), nullptr, 1.F);
 	dmgLabel->hide = true; 
+	winner = App->gui->AddLabel("winLabel", "Empty", { 255, 255, 255, 255 }, App->font->defaultFont, iPoint(450, 100), nullptr, 1.F);
+	winner->hide = true;
 	allyName = App->gui->AddLabel("CharLabel", "Character 1", { 0, 255, 0, 255 }, App->font->defaultFont, iPoint(450, 50), nullptr, 1.F);
 	enemyName = App->gui->AddLabel("CharLabel", "Character 2", { 255, 0, 0, 255 }, App->font->defaultFont, iPoint(450, 75), nullptr, 1.F);
 
@@ -201,6 +203,15 @@ bool j1EntityFactory::PreUpdate()
 		{
 			popUpCurrentTime = 0.f; 
 			dmgLabel->hide = true; 
+		}
+	}
+
+	if (winner->hide == false)
+	{
+		if ((popUpWinCurrentTime += App->GetDt()) >= popUpWinTime)
+		{
+			popUpWinCurrentTime = 0.f;
+			winner->hide = true;
 		}
 	}
 
@@ -656,6 +667,10 @@ void j1EntityFactory::Death(Character* dead)
 	SDL_Color red = { 255, 0, 0, 255 };
 	allyName->ChangeTextureIdle("", &green, App->font->defaultFont);
 	enemyName->ChangeTextureIdle("", &red, App->font->defaultFont);
+
+	// Winner label
+	winner->hide = false; 
+	std::string text = ((dead->enemy) ? "CHARACTER 1 WINS" : "CHARACTER 2 WINS");
 }
 
 void j1EntityFactory::ResetAIHelperColors(bool ally, bool enemy)

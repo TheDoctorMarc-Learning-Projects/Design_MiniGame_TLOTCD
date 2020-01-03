@@ -125,6 +125,8 @@ public:
 	bool AIvsAI = false; 
 	float popUpCurrentTime = 0.f; 
 	float popUpTime = 2.f; 
+	float popUpWinCurrentTime = 0.f; 
+	float popUpWinTime = 2.f; 
 	unsigned int currentAttack = 0; 
 	UiItem_Label* dmgLabel = nullptr; 
 	RNG* rng = nullptr; 
@@ -139,6 +141,7 @@ public:
 	UiItem_Image* bottomLeft = nullptr;
 	UiItem_Label* allyName = nullptr; 
 	UiItem_Label* enemyName = nullptr;
+	UiItem_Label* winner = nullptr; 
 };
 
 
