@@ -8,10 +8,44 @@
 #include "j1EntityFactory.h"
 #include "RNG.h"
 
+Character::Character(bool active, bool enemy, bool AI, UiItem_Image* icon, Stats stats) : active(active), enemy(enemy), AI(AI), icon(icon), stats(stats)
+{
+	hpLabel = App->gui->AddLabel("HP", std::string("HP: " + std::to_string(stats.HP)), { 255, 255, 255, 255 }, App->font->defaultFont,
+		icon->GetPos() + iPoint(icon->hitBox.w / 2 + 100, -40), nullptr, 1.F); 
+	chargeLabel = App->gui->AddLabel("CHARGE", std::string("CHARGE: " + std::to_string(stats.charge)), { 255, 255, 255, 255 }, App->font->defaultFont,
+		icon->GetPos() + iPoint(icon->hitBox.w / 2 + 100, -20), nullptr, 1.F);
+	characterLabel = App->gui->AddLabel("CHARGE", (enemy) ? "Character 2" : "Character 1", { 255, 255, 255, 255 }, App->font->defaultFont,
+		icon->GetPos() + iPoint(icon->hitBox.w / 2 + 100, -60), nullptr, 1.F);
+
+	infoLabels.push_back(App->gui->AddLabel("DMG", std::string("WEAK ATT: " + std::to_string(stats.dmg)), { 200, 200, 200, 255 }, App->font->defaultFont,
+		icon->GetPos() + iPoint(icon->hitBox.w / 2 + 100, 20), nullptr, 1.F));
+	infoLabels.push_back(App->gui->AddLabel("DMG", std::string("STRONG ATT: " + std::to_string(stats.dmg2)), { 200, 200, 200, 255 }, App->font->defaultFont,
+		icon->GetPos() + iPoint(icon->hitBox.w / 2 + 100, 40), nullptr, 1.F));
+	infoLabels.push_back(App->gui->AddLabel("DMG", std::string("WEAK ATT CHARGE: " + std::to_string(stats.dmgCharge)), { 200, 200, 200, 255 }, App->font->defaultFont,
+		icon->GetPos() + iPoint(icon->hitBox.w / 2 + 100, 60), nullptr, 1.F));
+	infoLabels.push_back(App->gui->AddLabel("DMG", std::string("STRONG ATT CHARGE: " + std::to_string(stats.dmg2Charge)), { 200, 200, 200, 255 }, App->font->defaultFont,
+		icon->GetPos() + iPoint(icon->hitBox.w / 2 + 100, 80), nullptr, 1.F));
+	infoLabels.push_back(App->gui->AddLabel("DMG", std::string("BLOCK ABSORTION: " + std::to_string((int)(stats.blockPercentatge * 100.f)) + "%"), { 200, 200, 200, 255 }, App->font->defaultFont,
+		icon->GetPos() + iPoint(icon->hitBox.w / 2 + 100, 100), nullptr, 1.F));
+	infoLabels.push_back(App->gui->AddLabel("DMG", std::string("EVADE PROBABILITY: " + std::to_string(stats.dmg2Charge) + "%"), { 200, 200, 200, 255 }, App->font->defaultFont,
+		icon->GetPos() + iPoint(icon->hitBox.w / 2 + 100, 120), nullptr, 1.F));
+
+	if (active == false)
+	{
+		hpLabel->hide = chargeLabel->hide = characterLabel->hide = icon->hide = true;
+		for (auto& l : infoLabels)
+			l->hide = true; 
+	}
+		
+
+
+	
+}
+
 Character::Character(bool active, bool enemy, bool AI, UiItem_Image* icon) : active(active), enemy(enemy), AI(AI), icon(icon)
 {
 	hpLabel = App->gui->AddLabel("HP", std::string("HP: " + std::to_string(stats.HP)), { 255, 255, 255, 255 }, App->font->defaultFont,
-		icon->GetPos() + iPoint(icon->hitBox.w / 2 + 50, -40), nullptr, 1.F); 
+		icon->GetPos() + iPoint(icon->hitBox.w / 2 + 50, -40), nullptr, 1.F);
 	chargeLabel = App->gui->AddLabel("CHARGE", std::string("CHARGE: " + std::to_string(stats.charge)), { 255, 255, 255, 255 }, App->font->defaultFont,
 		icon->GetPos() + iPoint(icon->hitBox.w / 2 + 50, -20), nullptr, 1.F);
 	characterLabel = App->gui->AddLabel("CHARGE", (enemy) ? "Character 2" : "Character 1", { 255, 255, 255, 255 }, App->font->defaultFont,
@@ -20,6 +54,7 @@ Character::Character(bool active, bool enemy, bool AI, UiItem_Image* icon) : act
 	if (active == false)
 		hpLabel->hide = chargeLabel->hide = characterLabel->hide = icon->hide = true;
 }
+
 
 void Character::Update(float dt)
 {
@@ -321,6 +356,8 @@ void Character::Deactivate()
 	attackTurn = false;
 	active = false; 
 	hpLabel->hide = chargeLabel->hide = characterLabel->hide = icon->hide = true;
+	for (auto& l : infoLabels)
+		l->hide = true;
 	UpdateLabels(); 
 }
 
@@ -328,5 +365,7 @@ void Character::Activate()
 { 
 	active = true; 
 	hpLabel->hide = chargeLabel->hide = characterLabel->hide = icon->hide = false;
+	for (auto& l : infoLabels)
+		l->hide = false;
 	UpdateLabels();
 }

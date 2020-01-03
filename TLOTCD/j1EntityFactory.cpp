@@ -35,29 +35,85 @@ bool j1EntityFactory::Start()
 {
 	SDL_Rect s = { 309, 852, 148, 355 };
 	UiItem_Image* img1 = App->gui->AddImage({ 100,300 }, &s, "Img", nullptr, 1.0F);
-	auto character = DBG_NEW Character(true, false, false, img1); 
+	Stats stats1;
+	stats1.blockPercentatge = 0.5f;
+	stats1.HP = 100;
+	stats1.dmg = 20;
+	stats1.dmg2 = 30;
+	stats1.dmgCharge = 2;
+	stats1.dmg2Charge = 3;
+	stats1.evadeProb = 50;
+	auto character = DBG_NEW Character(true, false, false, img1, stats1);
 	characters.push_back(character);
 	characters.at(0)->attackTurn = true; 
 	allyCharacters.push_back(character);
 
-
 	s = { 0,852,290,388 };
-	UiItem_Image* img2 = App->gui->AddImage({ 800,100 }, &s, "Img", nullptr, 1.0F);
-	auto character2 = DBG_NEW Character(true, true, true, img2); 
+	UiItem_Image* img2 = App->gui->AddImage({ 750,100 }, &s, "Img", nullptr, 1.0F);
+	stats1.blockPercentatge = 0.2f;
+	stats1.HP = 150;
+	stats1.dmg = 50;
+	stats1.dmg2 = 60;
+	stats1.dmgCharge = 5;
+	stats1.dmg2Charge = 10;
+	stats1.evadeProb = 10;
+	auto character2 = DBG_NEW Character(true, true, true, img2, stats1);
 	characters.push_back(character2);
 	enemyCharacters.push_back(character2);
 
 	s = { 0,1264,259,295 };
-	UiItem_Image* img3 = App->gui->AddImage({ 800,100 }, &s, "Img", nullptr, 1.0F);
-	auto character3 = DBG_NEW Character(false, true, true, img3); 
+	UiItem_Image* img3 = App->gui->AddImage({ 750,100 }, &s, "Img", nullptr, 1.0F);
+	stats1.blockPercentatge = 0.8f;
+	stats1.HP = 80;
+	stats1.dmg = 10;
+	stats1.dmg2 = 20;
+	stats1.dmgCharge = 1;
+	stats1.dmg2Charge = 2;
+	stats1.evadeProb = 70;
+	auto character3 = DBG_NEW Character(false, true, true, img3, stats1);
 	characters.push_back(character3);
 	enemyCharacters.push_back(character3);
 
 	s = { 294,1231,250,368 };
 	UiItem_Image* img4 = App->gui->AddImage({ 100,300 }, &s, "Img", nullptr, 1.0F);
-	auto character4 = DBG_NEW Character(false, false, true, img4);
+	stats1.blockPercentatge = 0.4f;
+	stats1.HP = 120;
+	stats1.dmg = 25;
+	stats1.dmg = 35;
+	stats1.dmgCharge = 4;
+	stats1.dmg2Charge = 6;
+	stats1.evadeProb = 30;
+	auto character4 = DBG_NEW Character(false, false, true, img4, stats1);
 	characters.push_back(character4);
 	allyCharacters.push_back(character4);
+
+
+	s = { 366,1636,197,320 };
+	UiItem_Image* img5 = App->gui->AddImage({ 100,300 }, &s, "Img", nullptr, 1.0F);
+	stats1.blockPercentatge = 0.4f;
+	stats1.HP = 100;
+	stats1.dmg = 20;
+	stats1.dmg = 30;
+	stats1.dmgCharge = 2;
+	stats1.dmg2Charge = 3;
+	stats1.evadeProb = 60;
+	auto character5 = DBG_NEW Character(false, false, true, img5, stats1);
+	characters.push_back(character5);
+	allyCharacters.push_back(character5);
+
+	s = { 0,1598,281,357 };
+	UiItem_Image* img6 = App->gui->AddImage({ 750,100 }, &s, "Img", nullptr, 1.0F);
+	stats1.blockPercentatge = 0.4f;
+	stats1.HP = 140;
+	stats1.dmg = 40;
+	stats1.dmg = 50;
+	stats1.dmgCharge = 6;
+	stats1.dmg2Charge = 8;
+	stats1.evadeProb = 15;
+	auto character6 = DBG_NEW Character(false, true, true, img6, stats1);
+	characters.push_back(character6);
+	enemyCharacters.push_back(character6);
+
 
 	// for the player
 	s = { 572,919,238,65 };

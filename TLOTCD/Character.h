@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <list>
 
 class UiItem_Label; 
 class UiItem_Image; 
@@ -9,7 +10,7 @@ struct Stats
 {
 	unsigned int HP = 100;
 	unsigned int dmg = 20;
-	unsigned int dmg2 = 5000;
+	unsigned int dmg2 = 30;
 	unsigned int dmgCharge = 2; 
 	unsigned int dmg2Charge = 3; 
 	unsigned int charge = 10;
@@ -67,9 +68,14 @@ public:
 	Character() {}; 
 	~Character() {};
 	Character(bool active, bool enemy, bool AI, UiItem_Image* icon); 
+	Character(bool active, bool enemy, bool AI, UiItem_Image* icon, Stats stats); 
 
 private: 
 	void Update(float dt); 
+	void CleanUp()
+	{
+		infoLabels.clear(); 
+	}
 
 	// Generic
 	void Attack(unsigned int damage, unsigned int charge, bool updateLabel = true);
@@ -106,6 +112,8 @@ private:
 	UiItem_Label* hpLabel = nullptr; 
 	UiItem_Label* chargeLabel = nullptr;
 	UiItem_Label* characterLabel = nullptr;
+
+	std::list<UiItem_Label*> infoLabels; 
 
 	friend class j1Gui; 
 	friend class j1EntityFactory; 

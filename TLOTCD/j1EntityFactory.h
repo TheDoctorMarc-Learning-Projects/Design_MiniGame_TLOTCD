@@ -32,7 +32,11 @@ public:
 	bool CleanUp() { 
 		
 		for (auto& c : characters)
-			RELEASE(c); 
+		{
+			c->CleanUp(); 
+			RELEASE(c);
+		}
+		
 		characters.clear(); 
 
 		for (auto& c : actionHelpers)
