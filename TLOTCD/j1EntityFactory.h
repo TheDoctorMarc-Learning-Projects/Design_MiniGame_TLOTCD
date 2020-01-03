@@ -14,8 +14,7 @@
 #include <random>
 #include "j1Fonts.h"
 
-#define RECHARGE 2
-#define HEAL 15
+#define RECHARGE 3
 
 class RNG; 
 class j1EntityFactory : public j1Module

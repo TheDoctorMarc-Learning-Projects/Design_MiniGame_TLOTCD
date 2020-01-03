@@ -57,64 +57,6 @@ bool j1Audio::Awake(pugi::xml_node& config)
 
 bool j1Audio::Start()
 {
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - GUI
-	LoadFx("sound/fx/dsswtchn.wav", "buttonClick");
-	LoadFx("sound/fx/At Vance - Four Seasons - Summer.wav", "musSlider"); 
-	LoadFx("sound/fx/dsbossit.wav", "fxsSlider");
-
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - coins
-	LoadFx("sound/fx/figurePickUp.wav", "figurePickUp");
-	LoadFx("sound/fx/dsitemup.wav", "itemPickUp");
-	
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - weapons
-	LoadFx("sound/fx/dswpnup.wav", "weaponPickUp");
-	LoadFx("sound/fx/dsshotgn.wav", "shotgunShotFire");
-	LoadFx("sound/fx/dspistol.wav", "machineGunShotFire");
-	LoadFx("sound/fx/dssawup.wav", "chainsawStart");
-	LoadFx("sound/fx/dssawidl.wav", "chainsawIdle");
-	LoadFx("sound/fx/dssawful.wav", "chainsawShotFire");
-	LoadFx("sound/fx/dssawhit.wav", "chainsawHit");
-
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - enemies  
-	LoadFx("sound/fx/dsclaw.wav", "EnemyIMPAttack");
-	LoadFx("sound/fx/dsbgdth1.wav", "EnemyIMPDeath");
-	LoadFx("sound/fx/dsbgdth2.wav", "EnemyIMPDeath2");
-	LoadFx("sound/fx/dspopain.wav", "EnemyIMPInjured");
-	LoadFx("sound/fx/dsbgact.wav", "EnemyIMPNearby");
-
-	LoadFx("sound/fx/dsfirsht.wav", "EnemyCacodemonAttack"); // long range 
-	LoadFx("sound/fx/dssgtdth.wav", "EnemyCacodemonDeath");
-	LoadFx("sound/fx/dsdmpain.wav", "EnemyCacodemonInjured");
-	LoadFx("sound/fx/dsdmact.wav", "EnemyCacodemonNearby");
-
-	LoadFx("sound/fx/dsclaw.wav", "EnemyBaronOfHellAttack"); // melee 
-	LoadFx("sound/fx/dsfirsht.wav", "EnemyBaronOfHellAttack2"); // long range 
-	LoadFx("sound/fx/dsbrsdth.wav", "EnemyBaronOfHellDeath");
-	LoadFx("sound/fx/dsdmpain.wav", "EnemyBaronOfHellInjured");
-	LoadFx("sound/fx/dsdmact.wav", "EnemyBaronOfHellNearby");
-
-
-	LoadFx("sound/fx/dsclaw.wav", "EnemyHellKnightAttack");  
-	LoadFx("sound/fx/dsbrsdth.wav", "EnemyHellKnightDeath");
-	LoadFx("sound/fx/dsdmpain.wav", "EnemyHellKnightInjured");
-	LoadFx("sound/fx/dsdmact.wav", "EnemyHellKnightNearby");
-
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - player
-	LoadFx("sound/fx/dsoof.wav", "fall");
-	LoadFx("sound/fx/dash.wav", "dash");
-	LoadFx("sound/fx/dsplpain.wav", "playerInjured");
-	LoadFx("sound/fx/dspldeth.wav", "playerDeath");
-	LoadFx("sound/fx/dsslop.wav", "playerDeath2");
-
-
-	int i = 1; 
-	for (auto chunk = fxMap.begin(); chunk != fxMap.end(); ++chunk)
-	{
-		(*chunk).second.actualChannel = i; 
-		++i; 
-	}
-
-	Mix_AllocateChannels(i);    
  
 
 	return true;

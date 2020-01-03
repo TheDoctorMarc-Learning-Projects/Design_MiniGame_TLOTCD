@@ -34,54 +34,54 @@ return ret;
 bool j1EntityFactory::Start()
 {
 	SDL_Rect s = { 309, 852, 148, 355 };
-	UiItem_Image* img1 = App->gui->AddImage({ 100,300 }, &s, "Img", nullptr, 1.0F);
+	UiItem_Image* img1 = App->gui->AddImage({ 100,330 }, &s, "Img", nullptr, 1.0F);
 	Stats stats1;
 	stats1.blockPercentatge = 0.5f;
-	stats1.HP = 100;
+	stats1.initialHP = stats1.HP = 70;
 	stats1.dmg = 20;
 	stats1.dmg2 = 30;
 	stats1.dmgCharge = 2;
 	stats1.dmg2Charge = 3;
-	stats1.evadeProb = 50;
+	stats1.evadeProb = 35;
 	auto character = DBG_NEW Character(true, false, false, img1, stats1);
 	characters.push_back(character);
 	characters.at(0)->attackTurn = true; 
 	allyCharacters.push_back(character);
 
 	s = { 0,852,290,388 };
-	UiItem_Image* img2 = App->gui->AddImage({ 750,100 }, &s, "Img", nullptr, 1.0F);
+	UiItem_Image* img2 = App->gui->AddImage({ 660,120 }, &s, "Img", nullptr, 1.0F);
 	stats1.blockPercentatge = 0.2f;
-	stats1.HP = 150;
+	stats1.initialHP = stats1.HP = 110;
 	stats1.dmg = 50;
 	stats1.dmg2 = 60;
-	stats1.dmgCharge = 5;
-	stats1.dmg2Charge = 10;
+	stats1.dmgCharge = 4;
+	stats1.dmg2Charge = 7;
 	stats1.evadeProb = 10;
 	auto character2 = DBG_NEW Character(true, true, true, img2, stats1);
 	characters.push_back(character2);
 	enemyCharacters.push_back(character2);
 
 	s = { 0,1264,259,295 };
-	UiItem_Image* img3 = App->gui->AddImage({ 750,100 }, &s, "Img", nullptr, 1.0F);
-	stats1.blockPercentatge = 0.8f;
-	stats1.HP = 80;
+	UiItem_Image* img3 = App->gui->AddImage({ 660,120 }, &s, "Img", nullptr, 1.0F);
+	stats1.blockPercentatge = 0.2f;
+	stats1.initialHP = stats1.HP = 45;
 	stats1.dmg = 10;
 	stats1.dmg2 = 20;
 	stats1.dmgCharge = 1;
 	stats1.dmg2Charge = 2;
-	stats1.evadeProb = 70;
+	stats1.evadeProb = 40;
 	auto character3 = DBG_NEW Character(false, true, true, img3, stats1);
 	characters.push_back(character3);
 	enemyCharacters.push_back(character3);
 
 	s = { 294,1231,250,368 };
-	UiItem_Image* img4 = App->gui->AddImage({ 100,300 }, &s, "Img", nullptr, 1.0F);
+	UiItem_Image* img4 = App->gui->AddImage({ 100,330 }, &s, "Img", nullptr, 1.0F);
 	stats1.blockPercentatge = 0.4f;
-	stats1.HP = 120;
+	stats1.initialHP = stats1.HP = 80;
 	stats1.dmg = 25;
-	stats1.dmg = 35;
-	stats1.dmgCharge = 4;
-	stats1.dmg2Charge = 6;
+	stats1.dmg2 = 35;
+	stats1.dmgCharge = 3;
+	stats1.dmg2Charge = 5;
 	stats1.evadeProb = 30;
 	auto character4 = DBG_NEW Character(false, false, true, img4, stats1);
 	characters.push_back(character4);
@@ -89,26 +89,26 @@ bool j1EntityFactory::Start()
 
 
 	s = { 366,1636,197,320 };
-	UiItem_Image* img5 = App->gui->AddImage({ 100,300 }, &s, "Img", nullptr, 1.0F);
+	UiItem_Image* img5 = App->gui->AddImage({ 100,330 }, &s, "Img", nullptr, 1.0F);
 	stats1.blockPercentatge = 0.4f;
-	stats1.HP = 100;
+	stats1.initialHP = stats1.HP = 60;
 	stats1.dmg = 20;
-	stats1.dmg = 30;
+	stats1.dmg2 = 30;
 	stats1.dmgCharge = 2;
 	stats1.dmg2Charge = 3;
-	stats1.evadeProb = 60;
+	stats1.evadeProb = 40;
 	auto character5 = DBG_NEW Character(false, false, true, img5, stats1);
 	characters.push_back(character5);
 	allyCharacters.push_back(character5);
 
 	s = { 0,1598,281,357 };
-	UiItem_Image* img6 = App->gui->AddImage({ 750,100 }, &s, "Img", nullptr, 1.0F);
+	UiItem_Image* img6 = App->gui->AddImage({ 660,120 }, &s, "Img", nullptr, 1.0F);
 	stats1.blockPercentatge = 0.4f;
-	stats1.HP = 140;
+	stats1.initialHP = stats1.HP = 95;
 	stats1.dmg = 40;
-	stats1.dmg = 50;
-	stats1.dmgCharge = 6;
-	stats1.dmg2Charge = 8;
+	stats1.dmg2 = 50;
+	stats1.dmgCharge = 4;
+	stats1.dmg2Charge = 6;
 	stats1.evadeProb = 15;
 	auto character6 = DBG_NEW Character(false, true, true, img6, stats1);
 	characters.push_back(character6);
@@ -117,61 +117,61 @@ bool j1EntityFactory::Start()
 
 	// for the player
 	s = { 572,919,238,65 };
-	actionHelpers.push_back(App->gui->AddImage({ 300,330 }, &s, "Img", nullptr, 1.0F));
+	actionHelpers.push_back(App->gui->AddImage({ 100,20 }, &s, "Img", nullptr, 1.0F));
 	s = { 572,1000,238,65 };
-	actionHelpers.push_back(App->gui->AddImage({ 300,410 }, &s, "Img", nullptr, 1.0F));
+	actionHelpers.push_back(App->gui->AddImage({ 100,100 }, &s, "Img", nullptr, 1.0F));
 	s = { 572,1077,238,65 };
-	actionHelpers.push_back(App->gui->AddImage({ 300,490 }, &s, "Img", nullptr, 1.0F));
+	actionHelpers.push_back(App->gui->AddImage({ 100,180 }, &s, "Img", nullptr, 1.0F));
 	s = { 572,1150,238,65 };
-	actionHelpers.push_back(App->gui->AddImage({ 300, 570 }, &s, "Img", nullptr, 1.0F));
+	actionHelpers.push_back(App->gui->AddImage({ 100,260 }, &s, "Img", nullptr, 1.0F));
 	s = { 842,919,238,65 };
-	defenseHelpers.push_back(App->gui->AddImage({ 300,330 }, &s, "Img", nullptr, 1.0F));
+	defenseHelpers.push_back(App->gui->AddImage({ 100,20 }, &s, "Img", nullptr, 1.0F));
 	s = { 842,1000,238,65 };
-	defenseHelpers.push_back(App->gui->AddImage({ 300,410 }, &s, "Img", nullptr, 1.0F));
+	defenseHelpers.push_back(App->gui->AddImage({ 100,100 }, &s, "Img", nullptr, 1.0F));
 
 	// Core helpers
-	dmgLabel = App->gui->AddLabel("dmgLabel", "Empty", { 255, 255, 255, 255 }, App->font->defaultFont, iPoint(500, 100), nullptr, 1.F);
+	dmgLabel = App->gui->AddLabel("dmgLabel", "Empty", { 255, 255, 255, 255 }, App->font->defaultFont, iPoint(450, 25), nullptr, 1.F);
 	dmgLabel->hide = true; 
-	allyName = App->gui->AddLabel("CharLabel", "Character 1", { 0, 255, 0, 255 }, App->font->defaultFont, iPoint(500, 125), nullptr, 1.F);
-	enemyName = App->gui->AddLabel("CharLabel", "Character 2", { 255, 0, 0, 255 }, App->font->defaultFont, iPoint(500, 150), nullptr, 1.F);
+	allyName = App->gui->AddLabel("CharLabel", "Character 1", { 0, 255, 0, 255 }, App->font->defaultFont, iPoint(450, 50), nullptr, 1.F);
+	enemyName = App->gui->AddLabel("CharLabel", "Character 2", { 255, 0, 0, 255 }, App->font->defaultFont, iPoint(450, 75), nullptr, 1.F);
 
 	// Toggle AI Modes
 	AIHelpers.push_back(App->gui->AddLabel("h", "Random Strategy", { 255, 255, 255, 255 }, App->font->defaultFont,
-		iPoint(10, 35), nullptr, 1.F));
+		iPoint(50, 170), nullptr, 1.F));
 	AIHelpers.push_back(App->gui->AddLabel("h", "Weak Attack", { 255, 255, 255, 255 }, App->font->defaultFont,
-		iPoint(10, 60), nullptr, 1.F));
+		iPoint(50, 195), nullptr, 1.F));
 	AIHelpers.push_back(App->gui->AddLabel("h", "Strong Attack", { 255, 255, 255, 255 }, App->font->defaultFont,
-		iPoint(10, 85), nullptr, 1.F));
+		iPoint(50, 220), nullptr, 1.F));
 	AIHelpers.push_back(App->gui->AddLabel("h", "Charge", { 255, 255, 255, 255 }, App->font->defaultFont,
-		iPoint(10, 110), nullptr, 1.F));
+		iPoint(50, 245), nullptr, 1.F));
 	AIHelpers.push_back(App->gui->AddLabel("h", "Heal", { 255, 255, 255, 255 }, App->font->defaultFont,
-		iPoint(10, 135), nullptr, 1.F));
+		iPoint(50, 270), nullptr, 1.F));
 
 	AIHelpers.push_back(App->gui->AddLabel("h", "Random Strategy", { 255, 255, 255, 255 }, App->font->defaultFont,
-		iPoint(260, 35), nullptr, 1.F));
+		iPoint(300, 170), nullptr, 1.F));
 	AIHelpers.push_back(App->gui->AddLabel("h", "Block", { 255, 255, 255, 255 }, App->font->defaultFont,
-		iPoint(260, 60), nullptr, 1.F));
+		iPoint(300, 195), nullptr, 1.F));
 	AIHelpers.push_back(App->gui->AddLabel("h", "Evade", { 255, 255, 255, 255 }, App->font->defaultFont,
-		iPoint(260, 85), nullptr, 1.F));
+		iPoint(300, 220), nullptr, 1.F));
 
 
-	AIHelpersEmemy.push_back(App->gui->AddLabel("h", "Random Attack", { 255, 255, 255, 255 }, App->font->defaultFont,
-		iPoint(800, 550), nullptr, 1.F));
+	AIHelpersEmemy.push_back(App->gui->AddLabel("h", "Random Strategy", { 255, 255, 255, 255 }, App->font->defaultFont,
+		iPoint(800, 450), nullptr, 1.F));
 	AIHelpersEmemy.push_back(App->gui->AddLabel("h", "Weak Attack", { 255, 255, 255, 255 }, App->font->defaultFont,
-		iPoint(800, 575), nullptr, 1.F));
+		iPoint(800, 475), nullptr, 1.F));
 	AIHelpersEmemy.push_back(App->gui->AddLabel("h", "Strong Attack", { 255, 255, 255, 255 }, App->font->defaultFont,
-		iPoint(800, 600), nullptr, 1.F));
+		iPoint(800, 500), nullptr, 1.F));
 	AIHelpersEmemy.push_back(App->gui->AddLabel("h", "Charge", { 255, 255, 255, 255 }, App->font->defaultFont,
-		iPoint(800, 625), nullptr, 1.F));
+		iPoint(800, 525), nullptr, 1.F));
 	AIHelpersEmemy.push_back(App->gui->AddLabel("h", "Heal", { 255, 255, 255, 255 }, App->font->defaultFont,
-		iPoint(800, 650), nullptr, 1.F));
+		iPoint(800, 550), nullptr, 1.F));
 
-	AIHelpersEmemy.push_back(App->gui->AddLabel("h", "Random Defence", { 255, 255, 255, 255 }, App->font->defaultFont,
-		iPoint(1050, 550), nullptr, 1.F));
+	AIHelpersEmemy.push_back(App->gui->AddLabel("h", "Random Strategy", { 255, 255, 255, 255 }, App->font->defaultFont,
+		iPoint(1050, 450), nullptr, 1.F));
 	AIHelpersEmemy.push_back(App->gui->AddLabel("h", "Block", { 255, 255, 255, 255 }, App->font->defaultFont,
-		iPoint(1050, 575), nullptr, 1.F));
+		iPoint(1050, 475), nullptr, 1.F));
 	AIHelpersEmemy.push_back(App->gui->AddLabel("h", "Evade", { 255, 255, 255, 255 }, App->font->defaultFont,
-		iPoint(1050, 600), nullptr, 1.F));
+		iPoint(1050, 500), nullptr, 1.F));
 
 	// set active ones
 	SDL_Color active = { 0, 255, 0, 255 };
