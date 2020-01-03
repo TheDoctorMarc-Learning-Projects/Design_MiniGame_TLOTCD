@@ -54,8 +54,8 @@ bool j1EntityFactory::Start()
 	stats1.initialHP = stats1.HP = 110;
 	stats1.dmg = 50;
 	stats1.dmg2 = 60;
-	stats1.dmgCharge = 4;
-	stats1.dmg2Charge = 7;
+	stats1.dmgCharge = 5;
+	stats1.dmg2Charge = 6;
 	stats1.evadeProb = 10;
 	auto character2 = DBG_NEW Character(true, true, true, img2, stats1);
 	characters.push_back(character2);
@@ -81,7 +81,7 @@ bool j1EntityFactory::Start()
 	stats1.dmg = 25;
 	stats1.dmg2 = 35;
 	stats1.dmgCharge = 3;
-	stats1.dmg2Charge = 5;
+	stats1.dmg2Charge = 4;
 	stats1.evadeProb = 30;
 	auto character4 = DBG_NEW Character(false, false, true, img4, stats1);
 	characters.push_back(character4);
@@ -103,12 +103,12 @@ bool j1EntityFactory::Start()
 
 	s = { 0,1598,281,357 };
 	UiItem_Image* img6 = App->gui->AddImage({ 660,120 }, &s, "Img", nullptr, 1.0F);
-	stats1.blockPercentatge = 0.4f;
+	stats1.blockPercentatge = 0.25f;
 	stats1.initialHP = stats1.HP = 95;
 	stats1.dmg = 40;
 	stats1.dmg2 = 50;
 	stats1.dmgCharge = 4;
-	stats1.dmg2Charge = 6;
+	stats1.dmg2Charge = 5;
 	stats1.evadeProb = 15;
 	auto character6 = DBG_NEW Character(false, true, true, img6, stats1);
 	characters.push_back(character6);
@@ -204,7 +204,9 @@ bool j1EntityFactory::PreUpdate()
 		}
 	}
 
-	
+	// Level Up
+	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
+		allyCharacters.at(0)->LevelUp(); 
 
 
 

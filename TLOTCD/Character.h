@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <list>
+#include <vector>
 
 class UiItem_Label; 
 class UiItem_Image; 
@@ -97,6 +97,9 @@ private:
 	void Deactivate(); 
 	void Activate(); 
 
+	// For Player
+	void LevelUp(); 
+
 private: 
 	Stats stats; 
 	strategyMode mode = strategyMode::RANDOM; 
@@ -113,7 +116,7 @@ private:
 	UiItem_Label* chargeLabel = nullptr;
 	UiItem_Label* characterLabel = nullptr;
 
-	std::list<UiItem_Label*> infoLabels; 
+	std::vector<UiItem_Label*> infoLabels; 
 
 	friend class j1Gui; 
 	friend class j1EntityFactory; 

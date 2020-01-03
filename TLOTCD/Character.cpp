@@ -369,3 +369,29 @@ void Character::Activate()
 		l->hide = false;
 	UpdateLabels();
 }
+
+void Character::LevelUp()
+{
+	if (this->AI == true)
+		return;
+
+	static unsigned int times = 0; 
+
+	if ((++times) > 3)
+		return; 
+
+	stats.Reset(); 
+	stats.dmg += 5; 
+	stats.dmg2 += 5; 
+	stats.initialHP += 10; 
+	stats.HP += 10; 
+	UpdateLabels();
+
+    // Update damage info labels
+	SDL_Color c = { 255, 255, 255, 255 };
+	infoLabels.at(0)->ChangeTextureIdle(std::string("WEAK ATT: " + std::to_string(stats.dmg)),
+		&c, App->font->defaultFont);
+	infoLabels.at(1)->ChangeTextureIdle(std::string("STRONG ATT: " + std::to_string(stats.dmg2)),
+		&c, App->font->defaultFont);
+
+}

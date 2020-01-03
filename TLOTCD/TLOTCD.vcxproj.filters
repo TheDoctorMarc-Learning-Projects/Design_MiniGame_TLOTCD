@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="j1App.cpp">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClCompile>
     <ClCompile Include="j1Audio.cpp">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClCompile>
     <ClCompile Include="UiItem.cpp">
       <Filter>UI</Filter>
@@ -20,31 +20,31 @@
       <Filter>UI</Filter>
     </ClCompile>
     <ClCompile Include="j1FadeToBlack.cpp">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClCompile>
     <ClCompile Include="j1Fonts.cpp">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClCompile>
     <ClCompile Include="j1Input.cpp">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClCompile>
     <ClCompile Include="j1Main.cpp">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClCompile>
     <ClCompile Include="j1PerfTimer.cpp">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClCompile>
     <ClCompile Include="j1Render.cpp">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClCompile>
     <ClCompile Include="j1Textures.cpp">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClCompile>
     <ClCompile Include="j1Timer.cpp">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClCompile>
     <ClCompile Include="j1Window.cpp">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClCompile>
     <ClCompile Include="j1EntityFactory.cpp">
       <Filter>Game Logic</Filter>
@@ -58,19 +58,19 @@
     <ClCompile Include="Color.cpp">
       <Filter>Resources</Filter>
     </ClCompile>
-    <ClCompile Include="Character.cpp">
-      <Filter>Game Logic</Filter>
-    </ClCompile>
     <ClCompile Include="RNG.cpp">
       <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Game Logic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1App.h">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClInclude>
     <ClInclude Include="j1Audio.h">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClInclude>
     <ClInclude Include="UiItem_Label.h">
       <Filter>UI</Filter>
@@ -85,31 +85,31 @@
       <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="j1FadeToBlack.h">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClInclude>
     <ClInclude Include="j1Fonts.h">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClInclude>
     <ClInclude Include="j1Input.h">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClInclude>
     <ClInclude Include="j1Module.h">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClInclude>
     <ClInclude Include="j1PerfTimer.h">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClInclude>
     <ClInclude Include="j1Render.h">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClInclude>
     <ClInclude Include="j1Textures.h">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClInclude>
     <ClInclude Include="j1Timer.h">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClInclude>
     <ClInclude Include="j1Window.h">
-      <Filter>Game Logic\Other</Filter>
+      <Filter>Other</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">
       <Filter>Game Logic</Filter>
@@ -169,7 +169,7 @@
     <Filter Include="Resources">
       <UniqueIdentifier>{332e5490-bdec-461d-8827-e4f942185a14}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game Logic\Other">
+    <Filter Include="Other">
       <UniqueIdentifier>{b3fe6aad-0e96-49a0-b9f6-a351cd65ca16}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
