@@ -361,14 +361,17 @@ void j1EntityFactory::SwitchTurn(Character* lastAttacker, Character* lastDefende
 	{
 		
 		if (currentDefMode == currenDefense::BLOCK)
-			damage = (float)currentAttack - ((float)currentAttack * (float)lastDefender->stats.blockPercentatge);
+			damage =((float)currentAttack >= (float)lastDefender->stats.HP) 
+			? (float)currentAttack : (float)currentAttack - ((float)currentAttack * (float)lastDefender->stats.blockPercentatge);
 	
 		else
 		{
 			if (lastDefender->stats.lastEvaded == false)
 				damage = currentAttack; 
 		}
-		lastDefender->stats.HP -= damage;
+
+		lastDefender->stats.HP -= (damage > (float)(int)lastDefender->stats.HP) ? 
+			lastDefender->stats.HP : (unsigned int)(int)damage;
 	}
 
 	if (lastAttacker->lastPassiveAction == "empty")
@@ -407,12 +410,6 @@ void j1EntityFactory::SwitchTurn(Character* lastAttacker, Character* lastDefende
 	else
 		enemyName->ChangeTextureIdle("", &red, App->font->defaultFont);
 
-	// Defender now attacks
-	lastDefender->attackTurn = true;
-
-	// Attacker now defends
-	lastAttacker->attackTurn = false;
-
 	// Update the labels in case it was AI
 	if (lastAttacker->AI)
 		lastAttacker->UpdateLabels(); 
@@ -420,12 +417,27 @@ void j1EntityFactory::SwitchTurn(Character* lastAttacker, Character* lastDefende
 	// Reset state
 	lastDefender->actionCompleted = lastAttacker->actionCompleted = false;
 	currentAttack = 0;
+
+	// Death
+	if (lastDefender->stats.HP <= 0)
+		Death(lastDefender);
+	else
+	{
+		// Defender now attacks
+		lastDefender->attackTurn = true;
+
+		// Attacker now defends
+		lastAttacker->attackTurn = false;
+
+	}
+
 }
 
 void j1EntityFactory::ToggleBattleMode()
 {
-	static bool AIvsAI = false; 
 	AIvsAI = !AIvsAI; 
+
+	ResetAIHelperColors(true, true); 
 
 	if (AIvsAI)
 	{
@@ -490,8 +502,8 @@ void j1EntityFactory::ToggleBattleMode()
 
 	// Helpers
 	SDL_Color active = { 0, 255, 0, 255 };
-	AIHelpers.at(static_cast<int>(enemyCharacters.at(i)->mode))->ChangeTextureIdle("", &active, App->font->defaultFont);
-	AIHelpers.at(static_cast<int>(strategyMode::MAX_MODES) + static_cast<int>(enemyCharacters.at(i)->dMode))->ChangeTextureIdle("", &active, App->font->defaultFont);
+	AIHelpersEmemy.at(static_cast<int>(enemyCharacters.at(i)->mode))->ChangeTextureIdle("", &active, App->font->defaultFont);
+	AIHelpersEmemy.at(static_cast<int>(strategyMode::MAX_MODES) + static_cast<int>(enemyCharacters.at(i)->dMode))->ChangeTextureIdle("", &active, App->font->defaultFont);
 
 
 	// Turn color label
@@ -499,4 +511,108 @@ void j1EntityFactory::ToggleBattleMode()
 	SDL_Color red = { 255, 0, 0, 255 };
 	allyName->ChangeTextureIdle("", &green, App->font->defaultFont);
 	enemyName->ChangeTextureIdle("", &red, App->font->defaultFont);
+}
+
+void j1EntityFactory::Death(Character* dead)
+{
+
+	if (AIvsAI)
+	{
+		// Deactivate the AI
+		dead->Deactivate();
+		
+		if(dead->enemy)
+			ResetAIHelperColors(false, true);
+		else
+			ResetAIHelperColors(true, false);
+
+		// Spawn new ally
+		if (dead->enemy == false)
+		{
+			int i = std::get<int>(rng->GetRandomValue(1, (int)allyCharacters.size() - 1));
+			allyCharacters.at(i)->Activate();
+
+			// Helpers
+			SDL_Color active = { 0, 255, 0, 255 };
+			AIHelpers.at(static_cast<int>(allyCharacters.at(i)->mode))->ChangeTextureIdle("", &active, App->font->defaultFont);
+			AIHelpers.at(static_cast<int>(strategyMode::MAX_MODES) + static_cast<int>(allyCharacters.at(i)->dMode))->ChangeTextureIdle("", &active, App->font->defaultFont);
+
+			// Reset Enemy
+			for (auto& c : enemyCharacters)
+				if (c->active && c->AI)
+					c->Reset();
+
+		}
+		else 	// Spawn new enemy
+		{
+		
+			int i = std::get<int>(rng->GetRandomValue(0, (int)enemyCharacters.size() - 1));
+			enemyCharacters.at(i)->Activate();
+
+			// Helpers
+			SDL_Color active = { 0, 255, 0, 255 };
+			AIHelpersEmemy.at(static_cast<int>(enemyCharacters.at(i)->mode))->ChangeTextureIdle("", &active, App->font->defaultFont);
+			AIHelpersEmemy.at(static_cast<int>(strategyMode::MAX_MODES) + static_cast<int>(enemyCharacters.at(i)->dMode))->ChangeTextureIdle("", &active, App->font->defaultFont);
+		
+			// Reset Ally
+			for (auto& c : allyCharacters)
+				if (c->active && c->AI)
+					c->Reset(); 
+		}
+
+		// Restore attack turn in the ally
+		for (auto& c : allyCharacters)
+			if (c->active && c->AI)
+				c->attackTurn = true; 
+
+	}
+	else
+	{
+		// Reset player (stats only)
+		if (dead->AI == false)
+			dead->Reset();
+	
+		// Deactivate enemy
+		ResetAIHelperColors(false, true);
+		for (auto& c : enemyCharacters)
+			if (c->active)
+				c->Deactivate(); 
+
+		// Spawn new enemy
+		int i = std::get<int>(rng->GetRandomValue(0, (int)enemyCharacters.size() - 1));
+		enemyCharacters.at(i)->Activate();
+
+		// Helpers
+		SDL_Color active = { 0, 255, 0, 255 };
+		AIHelpersEmemy.at(static_cast<int>(enemyCharacters.at(i)->mode))->ChangeTextureIdle("", &active, App->font->defaultFont);
+		AIHelpersEmemy.at(static_cast<int>(strategyMode::MAX_MODES) + static_cast<int>(enemyCharacters.at(i)->dMode))->ChangeTextureIdle("", &active, App->font->defaultFont);
+
+		// Restore attack turn at player
+		allyCharacters.at(0)->attackTurn = true; 
+
+	}
+	
+
+	// Turn color label
+	SDL_Color green = { 0, 255, 0, 255 };
+	SDL_Color red = { 255, 0, 0, 255 };
+	allyName->ChangeTextureIdle("", &green, App->font->defaultFont);
+	enemyName->ChangeTextureIdle("", &red, App->font->defaultFont);
+}
+
+void j1EntityFactory::ResetAIHelperColors(bool ally, bool enemy)
+{
+	SDL_Color c = { 255, 255, 255, 255 };
+	if (ally)
+	{
+		for (auto& h : AIHelpers)
+			h->ChangeTextureIdle("", &c, App->font->defaultFont);
+	}
+
+	if (enemy)
+	{
+		for (auto& h : AIHelpersEmemy)
+			h->ChangeTextureIdle("", &c, App->font->defaultFont);
+	}
+	
 }

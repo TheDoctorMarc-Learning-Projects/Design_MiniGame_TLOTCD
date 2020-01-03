@@ -265,7 +265,7 @@ void Character::AI_WeakAttack()
 {
 	if (stats.charge >= stats.dmgCharge)
 		Attack(stats.dmg, stats.dmgCharge, false);
-	else // what here? 
+	else  
 		ReCharge(false);
 }
 
@@ -273,13 +273,16 @@ void Character::AI_StrongAttack()
 {
 	if (stats.charge >= stats.dmg2Charge)
 		Attack(stats.dmg2, stats.dmg2Charge, false);
-	else // what here? 
+	else  
 		ReCharge(false);
 }
 
 void Character::AI_Recharge()
 {
-	ReCharge(false);
+	if (stats.charge < stats.initialCharge)
+		ReCharge(false);
+	else
+		AI_WeakAttack(); 
 }
 
 void Character::AI_Heal()
@@ -287,12 +290,7 @@ void Character::AI_Heal()
 	if (stats.HP < stats.initialHP)
 		Heal(false);
 	else // if not damaged, proceed with weak attack logic
-	{
-		if (stats.charge >= stats.dmgCharge)
-			Attack(stats.dmg, stats.dmgCharge, false);
-		else // what here? 
-			ReCharge(false);
-	}
+		AI_WeakAttack(); 
 }
 
 void Character::UpdateLabels()
@@ -312,6 +310,7 @@ void Character::Reset()
 	stats.Reset(); 
 	actionCompleted = false; 
 	attackTurn = false; 
+	UpdateLabels();
 }
 
 void Character::Deactivate()

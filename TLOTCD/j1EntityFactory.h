@@ -114,7 +114,12 @@ public:
 
 	void ToggleBattleMode(); 
 
+	void Death(Character* dead);
+
+	void ResetAIHelperColors(bool ally, bool enemy); 
+
 public:
+	bool AIvsAI = false; 
 	float popUpCurrentTime = 0.f; 
 	float popUpTime = 2.f; 
 	unsigned int currentAttack = 0; 

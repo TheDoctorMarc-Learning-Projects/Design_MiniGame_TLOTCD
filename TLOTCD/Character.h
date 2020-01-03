@@ -9,7 +9,7 @@ struct Stats
 {
 	unsigned int HP = 100;
 	unsigned int dmg = 20;
-	unsigned int dmg2 = 30;
+	unsigned int dmg2 = 5000;
 	unsigned int dmgCharge = 2; 
 	unsigned int dmg2Charge = 3; 
 	unsigned int charge = 10;
