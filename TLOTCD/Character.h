@@ -89,6 +89,9 @@ private:
 	void AI_Recharge();
 	void AI_Heal();
 
+	// Special AI
+	void Invincible(); 
+
 	// For AI
 	void UpdateLabels(); 
 
@@ -110,6 +113,7 @@ private:
 	bool active = true; 
 	bool enemy = true; 
 	bool AI = true;
+	bool incivible = false; 
 	std::string lastPassiveAction = "empty"; 
 	UiItem_Image* icon = nullptr; 
 	UiItem_Label* hpLabel = nullptr; 

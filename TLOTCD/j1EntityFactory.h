@@ -115,11 +115,13 @@ public:
 
 	void ToggleUIVisibility(bool ally, bool enemy, Character* allyC, Character* enemyC);
 
-	void ToggleBattleMode(); 
+	void ToggleBattleMode(Character* targetEnemy = nullptr); 
 
-	void Death(Character* dead);
+	void Death(Character* dead, Character* targetEnemy = nullptr);
 
 	void ResetAIHelperColors(bool ally, bool enemy); 
+
+	void InvincibleEnemyMode(); 
 
 public:
 	bool AIvsAI = false; 

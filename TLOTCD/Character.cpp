@@ -128,101 +128,107 @@ void Character::Update(float dt)
 		if (stats.currentTime == 0.f) // first frame
 		{
 			// Make Decision
-			if (attackTurn)
+			if (this->incivible == false)
 			{
-				switch (mode)
+				if (attackTurn)
 				{
-				case strategyMode::RANDOM:
-				{
-					auto v = std::get<int>(App->entityFactory->rng->GetRandomValue(0, 3));
-					switch (v)
+					switch (mode)
 					{
-					case 0: 
+					case strategyMode::RANDOM:
 					{
-						AI_WeakAttack();
-						break; 
-					}
-					case 1:
-					{
-						AI_StrongAttack();
+						auto v = std::get<int>(App->entityFactory->rng->GetRandomValue(0, 3));
+						switch (v)
+						{
+						case 0:
+						{
+							AI_WeakAttack();
+							break;
+						}
+						case 1:
+						{
+							AI_StrongAttack();
+							break;
+						}
+						case 2:
+						{
+							AI_Recharge();
+							break;
+						}
+						case 3:
+						{
+							AI_Heal();
+							break;
+						}
+						default:
+							break;
+						}
 						break;
 					}
-					case 2:
+
+					case strategyMode::WEAK_ATTACK:
+					{
+						AI_WeakAttack();
+
+						break;
+					}
+
+					case strategyMode::STRONG_ATTACK:
+					{
+						AI_StrongAttack();
+
+						break;
+					}
+
+					case strategyMode::CHARGE:
 					{
 						AI_Recharge();
 						break;
 					}
-					case 3:
+
+					case strategyMode::HP:
 					{
 						AI_Heal();
 						break;
 					}
+
 					default:
 						break;
 					}
-					break;
 				}
-					
-				case strategyMode::WEAK_ATTACK:
+				else
 				{
-					AI_WeakAttack(); 
+					switch (dMode)
+					{
+					case defenseStrategyMode::RANDOM:
+					{
+						auto v = std::get<int>(App->entityFactory->rng->GetRandomValue(0, 1));
+						if (v == 0)
+							currentDefense = currenDefense::BLOCK;
+						else
+							currentDefense = currenDefense::EVADE;
 
-					break;
-				}
-					
-				case strategyMode::STRONG_ATTACK:
-				{
-					AI_StrongAttack(); 
+						break;
+					}
 
-					break;
+					case defenseStrategyMode::BLOCK:
+						currentDefense = currenDefense::BLOCK;
+						break;
+					case defenseStrategyMode::EVADE:
+						currentDefense = currenDefense::EVADE;
+						break;
+					default:
+						break;
+					}
+
+					if (currentDefense == currenDefense::EVADE)
+						Evade();
+
 				}
-	
-				case strategyMode::CHARGE:
-				{
-					AI_Recharge(); 
-					break;
-				}
-					
-				case strategyMode::HP:  
-				{
-					AI_Heal(); 
-					break;
-				}
-					
-				default:
-					break;
-				}
+
 			}
 			else
-			{
-				switch (dMode)
-				{
-				case defenseStrategyMode::RANDOM:
-				{
-					auto v = std::get<int>(App->entityFactory->rng->GetRandomValue(0, 1));
-					if (v == 0)
-						currentDefense = currenDefense::BLOCK;
-					else
-						currentDefense = currenDefense::EVADE;
-
-					break;
-				}
-
-				case defenseStrategyMode::BLOCK:
-					currentDefense = currenDefense::BLOCK;
-					break;
-				case defenseStrategyMode::EVADE:
-					currentDefense = currenDefense::EVADE;
-					break;
-				default:
-					break;
-				}
-
-				if (currentDefense == currenDefense::EVADE)
-					Evade(); 
+				Invincible();
 			
-			}
-
 		}
 
 		// Await some time
@@ -236,6 +242,65 @@ void Character::Update(float dt)
 	}
 
 	App->entityFactory->CheckBothCompleted(); 
+
+}
+
+void Character::Invincible()
+{
+	Character* enemy = nullptr; 
+	for(auto& c : App->entityFactory->characters)
+		if (c->active && c != this) {
+			enemy = c; 
+			break; 
+		}
+
+	if (!enemy)
+		return; 
+
+	if (attackTurn)
+	{
+		// Finish the enemy with weak attack
+		int enemyHP = enemy->stats.HP; 
+		enemyHP -= (stats.dmg - stats.dmg * enemy->stats.blockPercentatge); 
+		if (stats.charge >= stats.dmgCharge && enemyHP <= 0)
+		{
+			Attack(stats.dmg, stats.dmgCharge, false);
+			return; 
+		}
+
+		// Finish the enemy with strong attack
+		enemyHP = enemy->stats.HP;
+		enemyHP -= (stats.dmg2 - stats.dmg2 * enemy->stats.blockPercentatge); 
+		if (stats.charge >= stats.dmg2Charge && enemyHP <= 0)
+		{
+			Attack(stats.dmg2, stats.dmg2Charge, false);
+			return;
+		}
+			
+		// Otherwise
+		// As a reference, always try to have more HP than the enemy's stronger attack
+		if (stats.HP <= enemy->stats.dmg2)
+			Heal(false); 
+		else
+		{
+			if (stats.charge < stats.dmgCharge)
+				ReCharge(false); 
+			else
+				AI_StrongAttack();
+			
+		}
+	}
+	else
+	{
+		// Block always, unless an enemy strong attack would kill me even if blocking, then evade
+		int HP = stats.HP; 
+		currentDefense = currenDefense::BLOCK;
+		if ((HP -= (enemy->stats.dmg2 - stats.blockPercentatge * enemy->stats.dmg2)) <= 0)
+			currentDefense = currenDefense::EVADE;
+			
+		if (currentDefense == currenDefense::EVADE)
+			Evade();
+	}
 
 }
 

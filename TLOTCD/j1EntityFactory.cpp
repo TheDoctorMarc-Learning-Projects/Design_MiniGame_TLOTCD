@@ -48,6 +48,14 @@ bool j1EntityFactory::Start()
 	characters.at(0)->attackTurn = true; 
 	allyCharacters.push_back(character);
 
+	// Enemy 1 (invincible mode), copy player appearance and stats
+	UiItem_Image* img666 = App->gui->AddImage({ 600,120 }, &s, "Img", nullptr, 1.0F);
+	auto invincible = DBG_NEW Character(false, true, true, img666, stats1);
+	invincible->incivible = true;
+	characters.push_back(invincible);
+	enemyCharacters.push_back(invincible);
+
+
 	s = { 0,852,290,388 };
 	UiItem_Image* img2 = App->gui->AddImage({ 660,120 }, &s, "Img", nullptr, 1.0F);
 	stats1.blockPercentatge = 0.2f;
@@ -217,9 +225,11 @@ bool j1EntityFactory::PreUpdate()
 
 	// Level Up
 	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
-		allyCharacters.at(0)->LevelUp(); 
+		allyCharacters.at(0)->LevelUp();
 
-
+	// Invincible Enemy Mode
+	if (App->input->GetKey(SDL_SCANCODE_I) == KEY_DOWN) // TODO: go back ??
+		InvincibleEnemyMode(); 
 
 	bool ret = true;
 
@@ -275,7 +285,7 @@ void j1EntityFactory::ToggleAIModes(bool ally, bool enemy, Character* allyC, Cha
 
 	}
 
-	if (AIHelpersEmemy.at(0)->hide == enemy)
+	if (AIHelpersEmemy.at(0)->hide == enemy && enemyC->incivible == false)
 	{
 		for (auto& h : AIHelpersEmemy)
 			h->hide = !h->hide;
@@ -489,7 +499,7 @@ void j1EntityFactory::SwitchTurn(Character* lastAttacker, Character* lastDefende
 
 	// Death
 	if (lastDefender->stats.HP <= 0)
-		Death(lastDefender);
+		Death(lastDefender, (lastAttacker->incivible) ? lastAttacker : nullptr);
 	else
 	{
 		// Defender now attacks
@@ -502,7 +512,7 @@ void j1EntityFactory::SwitchTurn(Character* lastAttacker, Character* lastDefende
 
 }
 
-void j1EntityFactory::ToggleBattleMode()
+void j1EntityFactory::ToggleBattleMode(Character* targetEnemy)
 {
 	AIvsAI = !AIvsAI; 
 
@@ -566,13 +576,13 @@ void j1EntityFactory::ToggleBattleMode()
 		}
 	}
 
-	int i = std::get<int>(rng->GetRandomValue(0, (int)enemyCharacters.size() - 1));
-	enemyCharacters.at(i)->Activate();
-
+	auto toSpawn = (targetEnemy) ? targetEnemy : enemyCharacters.at(std::get<int>(rng->GetRandomValue(1, (int)enemyCharacters.size() - 1))); 
+	toSpawn->Activate();
+	
 	// Helpers
 	SDL_Color active = { 0, 255, 0, 255 };
-	AIHelpersEmemy.at(static_cast<int>(enemyCharacters.at(i)->mode))->ChangeTextureIdle("", &active, App->font->defaultFont);
-	AIHelpersEmemy.at(static_cast<int>(strategyMode::MAX_MODES) + static_cast<int>(enemyCharacters.at(i)->dMode))->ChangeTextureIdle("", &active, App->font->defaultFont);
+	AIHelpersEmemy.at(static_cast<int>(toSpawn->mode))->ChangeTextureIdle("", &active, App->font->defaultFont);
+	AIHelpersEmemy.at(static_cast<int>(strategyMode::MAX_MODES) + static_cast<int>(toSpawn->dMode))->ChangeTextureIdle("", &active, App->font->defaultFont);
 
 
 	// Turn color label
@@ -582,7 +592,7 @@ void j1EntityFactory::ToggleBattleMode()
 	enemyName->ChangeTextureIdle("", &red, App->font->defaultFont);
 }
 
-void j1EntityFactory::Death(Character* dead)
+void j1EntityFactory::Death(Character* dead, Character* targetEnemy)
 {
 
 	if (AIvsAI)
@@ -614,14 +624,13 @@ void j1EntityFactory::Death(Character* dead)
 		}
 		else 	// Spawn new enemy
 		{
-		
-			int i = std::get<int>(rng->GetRandomValue(0, (int)enemyCharacters.size() - 1));
-			enemyCharacters.at(i)->Activate();
+			auto toSpawn = (targetEnemy) ? targetEnemy : enemyCharacters.at(std::get<int>(rng->GetRandomValue(1, (int)enemyCharacters.size() - 1)));
+			toSpawn->Activate();
 
 			// Helpers
 			SDL_Color active = { 0, 255, 0, 255 };
-			AIHelpersEmemy.at(static_cast<int>(enemyCharacters.at(i)->mode))->ChangeTextureIdle("", &active, App->font->defaultFont);
-			AIHelpersEmemy.at(static_cast<int>(strategyMode::MAX_MODES) + static_cast<int>(enemyCharacters.at(i)->dMode))->ChangeTextureIdle("", &active, App->font->defaultFont);
+			AIHelpersEmemy.at(static_cast<int>(toSpawn->mode))->ChangeTextureIdle("", &active, App->font->defaultFont);
+			AIHelpersEmemy.at(static_cast<int>(strategyMode::MAX_MODES) + static_cast<int>(toSpawn->dMode))->ChangeTextureIdle("", &active, App->font->defaultFont);
 		
 			// Reset Ally
 			for (auto& c : allyCharacters)
@@ -648,13 +657,13 @@ void j1EntityFactory::Death(Character* dead)
 				c->Deactivate(); 
 
 		// Spawn new enemy
-		int i = std::get<int>(rng->GetRandomValue(0, (int)enemyCharacters.size() - 1));
-		enemyCharacters.at(i)->Activate();
+		auto toSpawn = (targetEnemy) ? targetEnemy : enemyCharacters.at(std::get<int>(rng->GetRandomValue(1, (int)enemyCharacters.size() - 1)));
+		toSpawn->Activate();
 
 		// Helpers
 		SDL_Color active = { 0, 255, 0, 255 };
-		AIHelpersEmemy.at(static_cast<int>(enemyCharacters.at(i)->mode))->ChangeTextureIdle("", &active, App->font->defaultFont);
-		AIHelpersEmemy.at(static_cast<int>(strategyMode::MAX_MODES) + static_cast<int>(enemyCharacters.at(i)->dMode))->ChangeTextureIdle("", &active, App->font->defaultFont);
+		AIHelpersEmemy.at(static_cast<int>(toSpawn->mode))->ChangeTextureIdle("", &active, App->font->defaultFont);
+		AIHelpersEmemy.at(static_cast<int>(strategyMode::MAX_MODES) + static_cast<int>(toSpawn->dMode))->ChangeTextureIdle("", &active, App->font->defaultFont);
 
 		// Restore attack turn at player
 		allyCharacters.at(0)->attackTurn = true; 
@@ -690,4 +699,35 @@ void j1EntityFactory::ResetAIHelperColors(bool ally, bool enemy)
 			h->ChangeTextureIdle("", &c, App->font->defaultFont);
 	}
 	
+}
+
+void j1EntityFactory::InvincibleEnemyMode()
+{
+	bool invincible = false; 
+	for (auto& c : characters)
+		if (c->active && c->incivible)
+		{
+			invincible = true;
+			break; 
+		}
+		
+	
+	if (AIvsAI == true)
+		ToggleBattleMode((invincible == false) ? (*enemyCharacters.begin()) : nullptr);
+	else
+	{
+		for (auto& c : characters)
+			if (c->active && c->enemy)
+				Death(c, (invincible == false) ? (*enemyCharacters.begin()) : nullptr);
+	}
+
+
+	// Hide helpers if going to invicible mode, otherwise unhide
+	if (AIHelpersEmemy.at(0)->hide == invincible)
+	{
+		for (auto& h : AIHelpersEmemy)
+			h->hide = !h->hide;
+
+	}
+
 }
